@@ -6,7 +6,7 @@ include_once 'commons/head.php';
 <h1>This is the Bike website</h1>
 <?php
 $db = new database\Database();
-$results = $db->select('select * from user');
+$results = $db->executeSQL('select * from user');
 ?>
 <?php if ($results === false) : ?>
   <?php

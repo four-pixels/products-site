@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS shopping.user (
   email VARCHAR(128) NOT NULL,
   PRIMARY KEY (id));
 
-
 -- -----------------------------------------------------
 -- Table shopping.product
 -- -----------------------------------------------------
@@ -21,7 +20,6 @@ CREATE TABLE IF NOT EXISTS shopping.product (
   price FLOAT NOT NULL,
   quatity INT NOT NULL,
   PRIMARY KEY (id));
-
 
 -- -----------------------------------------------------
 -- Table shopping.image
@@ -40,24 +38,4 @@ CREATE TABLE IF NOT EXISTS shopping.image (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
--- -----------------------------------------------------
--- Inser on Table shopping.user
--- -----------------------------------------------------
--- INSERT IGNORE INTO shopping.user 
--- SET 
--- id='1',
--- firstname='Rene',
--- lastname='Ramirez',
--- username='reneszabo',
--- password='rene',
--- email='rene@gmail.com';
--- 
--- INSERT IGNORE INTO shopping.user 
--- SET 
--- id='2',
--- firstname='Erick',
--- lastname='Hernandez',
--- username='ehz',
--- password='erick',
--- email='erick@gmail.com';
 
