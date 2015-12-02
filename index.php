@@ -43,7 +43,7 @@ $results = $db->executeSQL('select * from product');
     <h2><?php echo $result['productname']; ?></h2>
     <div><?php echo $result['description']; ?></div>
     <div><?php echo $result['price']; ?></div>
-    <div><?php echo $result['quatity']; ?></div>
+    <div><?php echo $result['quantity']; ?></div>
   <?php endforeach; ?>
 <?php endif; ?>
 

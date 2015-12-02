@@ -31,7 +31,7 @@ class Database {
                 productname VARCHAR(45) NOT NULL,
                 description TEXT NOT NULL,
                 price FLOAT NOT NULL,
-                quatity INT NOT NULL,
+                quantity INT NOT NULL,
                 PRIMARY KEY (id));',
           'CREATE TABLE IF NOT EXISTS shopping.image (
                 id INT NOT NULL AUTO_INCREMENT,
@@ -69,7 +69,7 @@ class Database {
             productname, 
             description, 
             price, 
-            quatity
+            quantity
           ) 
           VALUES 
           ( 
@@ -84,7 +84,7 @@ class Database {
             productname, 
             description, 
             price, 
-            quatity
+            quantity
           ) 
           VALUES 
           (
