@@ -13,3 +13,4 @@ and open the template in the editor.
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
+    <h1>THE HEADER OF THE PAGE</h1>
