@@ -14,7 +14,7 @@ class Database {
   private function createIfNotExist() {
     $this->connect();
     if (!$this->databaseCreated) { // IF FALSE THE CREATE THE DATABASE AND TABLE AND INSERTS
-      $secuenceSQL = [
+      $secuenceCreateSQL = [
           //CREATE DATABASE --> https://dev.mysql.com/doc/refman/5.5/en/create-database.html
           'CREATE SCHEMA IF NOT EXISTS shopping DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci',
           //CREATE TABLES --> https://dev.mysql.com/doc/refman/5.5/en/create-table.html
@@ -45,8 +45,17 @@ class Database {
                 FOREIGN KEY (product_id)
                 REFERENCES shopping.product (id)
                 ON DELETE NO ACTION
-                ON UPDATE NO ACTION);',
-          //INSER USERS
+                ON UPDATE NO ACTION);'
+      ];
+      foreach ($secuenceCreateSQL as $sqlString) {
+        $result = $this->executeSQL($sqlString);
+        if ($result !== true) {
+          die("Error Creating the Database: " . $this->error());
+          break;
+        }
+      }
+
+      $secuenceUserInsertsSQL = [//INSER USERS
           "INSERT INTO 
                   shopping.user 
                 SET 
@@ -62,7 +71,17 @@ class Database {
                   lastname='Hernandez',
                   username='ehz',
                   password='erick',
-                  email='erick@gmail.com';",
+                  email='erick@gmail.com';"
+      ];
+      foreach ($secuenceUserInsertsSQL as $sqlString) {
+        $result = $this->executeSQL($sqlString);
+        if ($result !== true) {
+          die("Error Creating the Database: " . $this->error());
+          break;
+        }
+      }
+
+      $secuenceProductInsertsSQL = [
           "INSERT INTO 
             shopping.product 
           (
@@ -74,7 +93,13 @@ class Database {
           VALUES 
           ( 
             'BikeName1', 
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n', 
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+            aliquip ex ea commodo consequat. Duis aute irure dolor in 
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+            sunt in culpa qui officia deserunt mollit anim id est laborum.\n', 
             '2500', 
             '5'
           );",
@@ -89,18 +114,78 @@ class Database {
           VALUES 
           (
             'BikeName2', 
-            'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.\n', 
+            'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. 
+            Nullam varius, turpis et commodo pharetra, est eros bibendum elit, 
+            nec luctus magna felis sollicitudin mauris. Integer in mauris eu 
+            nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
+            Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu 
+            tempor congue, eros est euismod turpis, id tincidunt sapien risus a 
+            quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
+            malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, 
+            consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, 
+            felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. 
+            Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. 
+            Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. 
+            Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. 
+            In hac habitasse platea dictumst.\n', 
             '1200', 
             '6'
           );",
+          "INSERT INTO 
+            shopping.product 
+          (
+            productname, 
+            description, 
+            price, 
+            quantity
+          ) 
+          VALUES 
+          (
+            'BikeName3', 
+            'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. 
+            Nullam varius, turpis et commodo pharetra, est eros bibendum elit, 
+            nec luctus magna felis sollicitudin mauris. Integer in mauris eu 
+            nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
+            Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu 
+            tempor congue, eros est euismod turpis, id tincidunt sapien risus a 
+            quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
+            malesuada nulla a mi.\n', 
+            '1200', 
+            '6'
+          );",
+          "INSERT INTO 
+            shopping.product 
+          (
+            productname, 
+            description, 
+            price, 
+            quantity
+          ) 
+          VALUES 
+          (
+            'BikeName4', 
+            'Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
+            malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, 
+            consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, 
+            felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. 
+            Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. 
+            Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. 
+            Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. 
+            In hac habitasse platea dictumst.\n', 
+            '1200', 
+            '6'
+          );"
       ];
-      foreach ($secuenceSQL as $sqlString) {
+      foreach ($secuenceProductInsertsSQL as $sqlString) {
         $result = $this->executeSQL($sqlString);
+        var_dump(mysqli_insert_id($this->connect()));
         if ($result !== true) {
           die("Error Creating the Database: " . $this->error());
           break;
         }
       }
+
+      $this->closeConnection();
     }
   }
 
@@ -146,7 +231,6 @@ class Database {
     $connection = $this->connect();
     // Query the database
     $result = $connection->query($query);
-    $this->closeConnection();
     return $result;
   }
 
@@ -159,6 +243,7 @@ class Database {
   public function executeSQL($query) {
     $rows = array();
     $result = $this->query($query);
+    var_dump($result);
     if ($result === false) {
       return false;
     } else if ($result === true) {
@@ -199,6 +284,22 @@ class Database {
       mysqli_close(self::$connection);
       self::$connection = null;
     }
+  }
+
+  public function createUser($user) {
+    $sql = "INSERT INTO 
+                  shopping.user (firstname,lastname,username,password,email)
+            VALUES
+                  (" .
+            $this->quote($user["firstname"]) . "," .
+            $this->quote($user["lastname"]) . "," .
+            $this->quote($user["username"]) . "," .
+            $this->quote($user["password"]) . "," .
+            $this->quote($user["email"]) .
+            ");";
+    $resuelt = $this->executeSQL($sql);
+    var_dump($resuelt);
+    var_dump($this->error());
   }
 
 }

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS shopping.product (
   productname VARCHAR(45) NOT NULL,
   description TEXT NOT NULL,
   price FLOAT NOT NULL,
-  quatity INT NOT NULL,
+  quantity INT NOT NULL,
   PRIMARY KEY (id));
 
 -- -----------------------------------------------------

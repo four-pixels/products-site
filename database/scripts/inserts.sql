@@ -29,7 +29,7 @@ INSERT INTO
   productname, 
   description, 
   price, 
-  quatity
+  quantity
 ) 
 VALUES 
 ( 
@@ -45,7 +45,7 @@ INSERT INTO
   productname, 
   description, 
   price, 
-  quatity
+  quantity
 ) 
 VALUES 
 (
