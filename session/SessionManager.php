@@ -8,10 +8,11 @@ namespace FourPixels\Session;
  * @author Erick
  * @author Rene
  */
-class SessionManager {
+class SessionManager  {
 
   public function __construct() {
     session_start();
+    return $this;
   }
 
   public function setSession($user) {
@@ -39,6 +40,11 @@ class SessionManager {
       return $_SESSION['fourpixels']['id'];
     }
     return false;
+  }
+
+  public function destroy() {
+    session_destroy();
+    return $this;
   }
 
 }

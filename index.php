@@ -1,12 +1,8 @@
 <?php
-include 'database/objects/User.php';
-include 'database/Database.php';
-include 'session/SessionManager.php';
 include 'commons/head.php';
 ?>
 <section>
   <h2>SESSION</h2>
-  <?php $session = new FourPixels\Session\SessionManager(); ?>
   <?php var_dump($session); ?>
   <h3>is Login?</h3>
   <?php var_dump($session->isLogin()); ?>

@@ -1,3 +1,9 @@
+<?php
+require_once 'session/SessionManager.php';
+require_once 'database/Database.php';
+$session = new FourPixels\Session\SessionManager();
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -15,22 +21,26 @@ and open the template in the editor.
   <body>
     <header id="main_header">
       <div id="logo">
-        <a href="index.php"><h1>Some Logo</h1>
+        <a href="index.php"><h1>Some Logo</h1></a>
       </div>
       <nav>
         <ul>
           <li>
-            <a href="index.php">Home</a>
+            <a href="index.php"> Home</a>
           </li>
           <li>
             <a href="registration.php">Registration</a>
           </li>
-          <li>
-            <a href="#not-implemented">Login</a>
-          </li>
-          <li>
-            <a href="#not-implemented">Logout</a>
-          </li>
+          <?php if ($session->isLogin() === false): ?>
+            <li>
+              <a href="login.php">Login</a>
+            </li>
+          <?php endif; ?>
+          <?php if ($session->isLogin() === true): ?>
+            <li>
+              <a href="logout.php">Logout</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </nav>
     </header>
