@@ -16,13 +16,30 @@ class Database {
   protected static $connection;
   private $databaseCreated = true;
 
+  /**
+   * The constructor will check if the database is created.
+   * It will check by calling the function createIdNotExist()
+   * 
+   * @return void 
+   */
   public function __construct() {
     $this->createIfNotExist();
   }
 
+  /**
+   * This function checks the global variable databaseCreated 
+   * If the variable is FALSE than it will:
+   * <ul>
+   *  <li>CREATE DATABASE</li>
+   *  <li>CREATE TABLE</li>
+   *  <li>INSERT USERS</li>
+   *  <li>INSERT PRODUCTS</li>
+   *  <li>INSERT IMAGES FOR PRODUCTS</li>
+   * </ul>
+   */
   private function createIfNotExist() {
     $this->connect();
-    if (!$this->databaseCreated) { // IF FALSE THE CREATE THE DATABASE AND TABLE AND INSERTS
+    if (!$this->databaseCreated) {
       $secuenceCreateSQL = [
           //CREATE DATABASE --> https://dev.mysql.com/doc/refman/5.5/en/create-database.html
           'CREATE SCHEMA IF NOT EXISTS shopping DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci',
@@ -63,7 +80,6 @@ class Database {
           break;
         }
       }
-
       $secuenceUserInsertsSQL = [
           [
               'firstname' => 'Rene',
@@ -87,7 +103,6 @@ class Database {
           break;
         }
       }
-
       $secuenceProductInsertsSQL = [
           [
               'productname' => 'BikeName1',
@@ -265,7 +280,7 @@ class Database {
   }
 
   /**
-   * Opens a connection, Execute sql, close connection and return rows. 
+   * Opens a connection, Execute sql and return rows. 
    *
    * @param $query The query string
    * @return bool False on failure / array Database rows on success
@@ -317,6 +332,11 @@ class Database {
 
   /* --- USER FUNCTIONS ------------------------------------------------- --- */
 
+  /**
+   * Execute a select on the Database: 
+   * <p><code>select * from user</code></p>
+   * @return array ['result'=>array,'hasError'=>string]
+   */
   public function getUserAll() {
     $sql = 'select * from user';
     var_dump($sql);
@@ -326,6 +346,16 @@ class Database {
     return $return;
   }
 
+  /**
+   * Creates a Insert of a User
+   * <p><code>INSERT INTO 
+   * shopping.user (firstname,lastname,username,password,email)
+   * VALUES
+   * (string,string,string,string,string)
+   * </code></p>
+   * @param array [firstname=>string ,lastname=>string ,username=>string ,password=>string ,email=>string]
+   * @return array ['result'=>array,idCreated=>int ,'hasError'=>string]
+   */
   public function createUser($user) {
     $sql = "INSERT INTO 
                   shopping.user (firstname,lastname,username,password,email)
@@ -345,6 +375,16 @@ class Database {
 
   /* --- PRODUCT FUNCTIONS ---------------------------------------------- --- */
 
+  /**
+   * Creates a Insert of a Product
+   * <p><code>INSERT INTO 
+   * shopping.product (productname, description, price, quantity)
+   * VALUES
+   * (string,string,float,int)
+   * </code></p>
+   * @param array [productname=>string ,description=>string ,price=>string ,quantity=>string]
+   * @return array ['result'=>array,idCreated=>int ,'hasError'=>string]
+   */
   public function createProduct($product) {
     $sql = "INSERT INTO 
                   shopping.product (productname, description, price, quantity)
@@ -362,6 +402,11 @@ class Database {
     return $return;
   }
 
+  /**
+   * Execute a select on the Database: 
+   * <p><code>select * from shopping.product</code></p>
+   * @return array ['result'=>array,'hasError'=>string]
+   */
   public function getProductAll() {
     $sql = 'select * from shopping.product';
     var_dump($sql);
@@ -371,6 +416,12 @@ class Database {
     return $return;
   }
 
+  /**
+   * Execute a select on the Database: 
+   * <p><code>select * from shopping.image where product_id= $idProduct</code></p>
+   * @param int $idProduct
+   * @return array ['result' => array, 'hasError' => string]
+   */
   public function getProductImages($idProduct) {
     $sql = 'select * from shopping.image where product_id=' . $idProduct;
     var_dump($sql);
@@ -382,6 +433,16 @@ class Database {
 
   /* --- IMAGE PRODUCT FUNCTIONS ---------------------------------------- --- */
 
+  /**
+   * Creates a Insert of a Product
+   * <p><code>INSERT INTO 
+   * shopping.image (title, featured, path, product_id)
+   * VALUES
+   * (string,boolean,string,int)
+   * </code></p>
+   * @param array [title=>string ,featured=>boolean ,path=>string ,product_id=>int]
+   * @return array ['result'=>array,idCreated=>int ,'hasError'=>string]
+   */
   public function createImageProduct($image) {
     $sql = "INSERT INTO 
                   shopping.image (title, featured, path, product_id)
