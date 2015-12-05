@@ -7,7 +7,14 @@ and open the template in the editor.
     Created on : 27-Nov-2015, 12:06:05 AM
     Author     : asus
 */
-
+header{
+  &#main_header{
+    .active a{
+      background: black;
+      color:white;
+    }
+  }
+}
 section{
   margin: 2em;
   padding: 3em;
