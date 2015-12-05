@@ -15,7 +15,7 @@ and open the template in the editor.
   <body>
     <header id="main_header">
       <div id="logo">
-        <a href="index.php"><h1>Some Logo</h1></a>
+        <a href="index.php"><h1>Some Logo</h1>
       </div>
       <nav>
         <ul>
