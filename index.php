@@ -1,6 +1,7 @@
 <?php
 include 'commons/head.php';
 ?>
+
 <section>
   <h2>SESSION</h2>
   <?php var_dump($session); ?>
