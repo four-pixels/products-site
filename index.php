@@ -4,31 +4,50 @@ include 'database/Database.php';
 include 'commons/head.php';
 ?>
 
-<h2>SELECT ALL USERS</h2>
+<h2>SELECT ALL USERS [getUserAll()]</h2>
 <?php
 $db = new FourPixels\Database\Database();
 $result = $db->getUserAll();
-?>
-
-<?php if ($result['hasError'] !== '') : ?>
-  <?php
+if ($result['hasError'] !== '') :
   $error = $result['hasError'];
   var_dump($error);
 // RENDER THE ERROR
-  ?>
-<?php else: ?>
-  <?php foreach ($result['result'] as $result): ?>
+else: foreach ($result['result'] as $result):
+    ?>
     <h2><?php echo $result['id'] . '->' . $result['firstname']; ?></h2>
     <div><?php echo $result['lastname']; ?></div>
     <div><?php echo $result['username']; ?></div>
     <div><?php echo $result['password']; ?></div>
     <div><?php echo $result['email']; ?></div>
-  <?php endforeach; ?>
-<?php endif; ?>
+    <?php
+  endforeach;
+endif;
+?>
+
+<h2>SELECT SPECIFIC USER erick [getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail)]</h2>
+
+
+<?php
+$userResult = $db->getUserByPasswordAndUsernameOrEmail('erick', 'ehz');
+if ($userResult['hasError'] !== '') :
+  $error = $userResult['hasError'];
+  var_dump($error);
+// RENDER THE ERROR
+else:
+  $user = $userResult['result'][0];
+  ?>
+  <h2><?php echo $user['id'] . '->' . $user['firstname']; ?></h2>
+  <div><?php echo $user['lastname']; ?></div>
+  <div><?php echo $user['username']; ?></div>
+  <div><?php echo $user['password']; ?></div>
+  <div><?php echo $user['email']; ?></div>
+<?php
+endif;
+?>
 
 
 
-<h2>SELECT ALL PRODUCTS</h2>
+<h2>SELECT ALL PRODUCTS [getProductAll()]</h2>
 
 <?php
 $result = $db->getProductAll();

@@ -347,6 +347,20 @@ class Database {
   }
 
   /**
+   * Execute a select on the Database: 
+   * <p><code>select * from user</code></p>
+   * @return array ['result'=>array,'hasError'=>string]
+   */
+  public function getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail) {
+    $sql = "select * from shopping.user as u where (u.username=" . $this->quote($usernameOrEmail) . " or u.email=" . $this->quote($usernameOrEmail) . ") and u.password=" . $this->quote($password) . " limit 1";
+    var_dump($sql);
+    $result = $this->executeSQL($sql);
+    $return = ['result' => $result, 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  /**
    * Creates a Insert of a User
    * <p><code>INSERT INTO 
    * shopping.user (firstname,lastname,username,password,email)
