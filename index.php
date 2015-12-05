@@ -1,23 +1,24 @@
 <?php
+include 'database/objects/User.php';
 include 'database/Database.php';
-include_once 'commons/head.php';
+include 'commons/head.php';
 ?>
 
 <h2>SELECT ALL USERS</h2>
-<code>select * from user;</code>
 <?php
-$db = new database\Database();
-$results = $db->executeSQL('select * from user');
+$db = new FourPixels\Database\Database();
+$result = $db->getUserAll();
 ?>
-<?php if ($results === false) : ?>
+
+<?php if ($result['hasError'] !== '') : ?>
   <?php
-  $error = $db->error();
+  $error = $result['hasError'];
   var_dump($error);
-// RENDER THE ERROR 
+// RENDER THE ERROR
   ?>
 <?php else: ?>
-  <?php foreach ($results as $result): ?>
-    <h2><?php echo $result['firstname']; ?></h2>
+  <?php foreach ($result['result'] as $result): ?>
+    <h2><?php echo $result['id'] . '->' . $result['firstname']; ?></h2>
     <div><?php echo $result['lastname']; ?></div>
     <div><?php echo $result['username']; ?></div>
     <div><?php echo $result['password']; ?></div>
@@ -26,27 +27,43 @@ $results = $db->executeSQL('select * from user');
 <?php endif; ?>
 
 
+
 <h2>SELECT ALL PRODUCTS</h2>
-<code>select * from products;</code>
 
 <?php
-$results = $db->executeSQL('select * from product');
-?>
-<?php if ($results === false) : ?>
-  <?php
-  $error = $db->error();
+$result = $db->getProductAll();
+if ($result['hasError'] !== '') :
+  $error = $result['hasError'];
   var_dump($error);
-// RENDER THE ERROR 
-  ?>
-<?php else: ?>
-  <?php foreach ($results as $result): ?>
-    <h2><?php echo $result['productname']; ?></h2>
+// RENDER THE ERROR
+else:
+  foreach ($result['result'] as $result):
+    ?>
+    <h2><?php echo $result['id'] . '->' . $result['productname']; ?></h2>
     <div><?php echo $result['description']; ?></div>
     <div><?php echo $result['price']; ?></div>
     <div><?php echo $result['quantity']; ?></div>
-  <?php endforeach; ?>
-<?php endif; ?>
-
+    <h3>Images for <?php echo $result['productname']; ?></h3>
+    <?php
+    $imagesResult = $db->getProductImages($result['id']);
+    if ($imagesResult['hasError'] !== '') :
+      var_dump($imagesResult['hasError']); // HANDLE AND RENDER ERROR
+    else:
+      foreach ($imagesResult['result'] as $imageResult):
+        ?>
+        <div>
+          <?php echo $imageResult['id']; ?>
+          <?php echo $imageResult['title']; ?>
+          <?php echo $imageResult['path']; ?>
+          <?php echo $imageResult['featured']; ?>
+          <?php echo $imageResult['product_id']; ?>
+        </div>
+        <?php
+      endforeach;
+    endif;
+  endforeach;
+endif;
+?>
 
 
 

@@ -1,8 +1,4 @@
-<html>
-  <head>
-    <title>Registration Page</title>
-  </head>
-  <body>
+<?php include 'commons/head.php'; ?>
     <form id="UserRegistration" action="validation.php" method="POST" >
       <div class="form-group">
         <label class="control-label required" for="user_fistname">First name</label>
@@ -28,7 +24,6 @@
         <button type="submit"> Submit</button>
       </div>
     </form>
-  </body>
-</html>
+<?php include 'commons/footer.php'; ?>
 
 

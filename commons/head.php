@@ -13,4 +13,24 @@ and open the template in the editor.
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
-    <h1>THE HEADER OF THE PAGE</h1>
+    <header id="main_header">
+      <div id="logo">
+        <a href="index.php"><h1>Some Logo</h1></a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.php">Home</a>
+          </li>
+          <li>
+            <a href="registration.php">Registration</a>
+          </li>
+          <li>
+            <a href="#not-implemented">Login</a>
+          </li>
+          <li>
+            <a href="#not-implemented">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>

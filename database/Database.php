@@ -1,7 +1,16 @@
 <?php
 
-namespace database;
+namespace FourPixels\Database;
 
+/**
+ * Description of Database
+ * 
+ * The Database Class has all the functions to manage the Database, functions
+ * like connect, close, executeQuery, quote.
+ * 
+ * @author Rene
+ * @author Erick
+ */
 class Database {
 
   protected static $connection;
@@ -50,71 +59,51 @@ class Database {
       foreach ($secuenceCreateSQL as $sqlString) {
         $result = $this->executeSQL($sqlString);
         if ($result !== true) {
-          die("Error Creating the Database: " . $this->error());
+          die("Error Creating the Database or Table: " . $this->error());
           break;
         }
       }
 
-      $secuenceUserInsertsSQL = [//INSER USERS
-          "INSERT INTO 
-                  shopping.user 
-                SET 
-                  firstname='Rene',
-                  lastname='Ramirez',
-                  username='reneszabo',
-                  password='rene',
-                  email='rene@gmail.com';",
-          "INSERT INTO 
-                  shopping.user 
-                SET 
-                  firstname='Erick',
-                  lastname='Hernandez',
-                  username='ehz',
-                  password='erick',
-                  email='erick@gmail.com';"
+      $secuenceUserInsertsSQL = [
+          [
+              'firstname' => 'Rene',
+              'lastname' => 'Ramirez',
+              'username' => 'reneszabo',
+              'password' => 'rene',
+              'email' => 'rene@gmail.com'
+          ],
+          [
+              'firstname' => 'Erick',
+              'lastname' => 'Hernandez',
+              'username' => 'ehz',
+              'password' => 'erick',
+              'email' => 'erick@gmail.com'
+          ]
       ];
-      foreach ($secuenceUserInsertsSQL as $sqlString) {
-        $result = $this->executeSQL($sqlString);
-        if ($result !== true) {
-          die("Error Creating the Database: " . $this->error());
+      foreach ($secuenceUserInsertsSQL as $arrayProperties) {
+        $result = $this->createUser($arrayProperties);
+        if ($result['hasError'] !== '') {
+          die("Error Inserting User into the Database: " . $this->error());
           break;
         }
       }
 
       $secuenceProductInsertsSQL = [
-          "INSERT INTO 
-            shopping.product 
-          (
-            productname, 
-            description, 
-            price, 
-            quantity
-          ) 
-          VALUES 
-          ( 
-            'BikeName1', 
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+          [
+              'productname' => 'BikeName1',
+              'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
             aliquip ex ea commodo consequat. Duis aute irure dolor in 
             reprehenderit in voluptate velit esse cillum dolore eu fugiat 
             nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-            sunt in culpa qui officia deserunt mollit anim id est laborum.\n', 
-            '2500', 
-            '5'
-          );",
-          "INSERT INTO 
-            shopping.product 
-          (
-            productname, 
-            description, 
-            price, 
-            quantity
-          ) 
-          VALUES 
-          (
-            'BikeName2', 
-            'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. 
+            sunt in culpa qui officia deserunt mollit anim id est laborum.\n',
+              'price' => '2500',
+              'quantity' => '5'
+          ],
+          [
+              'productname' => 'BikeName2',
+              'description' => 'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. 
             Nullam varius, turpis et commodo pharetra, est eros bibendum elit, 
             nec luctus magna felis sollicitudin mauris. Integer in mauris eu 
             nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
@@ -127,65 +116,106 @@ class Database {
             Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. 
             Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. 
             Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. 
-            In hac habitasse platea dictumst.\n', 
-            '1200', 
-            '6'
-          );",
-          "INSERT INTO 
-            shopping.product 
-          (
-            productname, 
-            description, 
-            price, 
-            quantity
-          ) 
-          VALUES 
-          (
-            'BikeName3', 
-            'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. 
+            In hac habitasse platea dictumst.\n',
+              'price' => '1200',
+              'quantity' => '6'
+          ],
+          [
+
+
+              'productname' => 'BikeName3',
+              'description' => 'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. 
             Nullam varius, turpis et commodo pharetra, est eros bibendum elit, 
             nec luctus magna felis sollicitudin mauris. Integer in mauris eu 
             nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
             Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu 
             tempor congue, eros est euismod turpis, id tincidunt sapien risus a 
             quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
-            malesuada nulla a mi.\n', 
-            '1200', 
-            '6'
-          );",
-          "INSERT INTO 
-            shopping.product 
-          (
-            productname, 
-            description, 
-            price, 
-            quantity
-          ) 
-          VALUES 
-          (
-            'BikeName4', 
-            'Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
+            malesuada nulla a mi.\n',
+              'price' => '1200',
+              'quantity' => '6'
+          ],
+          [
+
+
+              'productname' => 'BikeName4',
+              'description' => 'Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
             malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, 
             consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, 
             felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. 
             Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. 
             Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. 
             Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. 
-            In hac habitasse platea dictumst.\n', 
-            '1200', 
-            '6'
-          );"
+            In hac habitasse platea dictumst.\n',
+              'price' => '1200',
+              'quantity' => '6'
+          ]
       ];
-      foreach ($secuenceProductInsertsSQL as $sqlString) {
-        $result = $this->executeSQL($sqlString);
-        var_dump(mysqli_insert_id($this->connect()));
-        if ($result !== true) {
-          die("Error Creating the Database: " . $this->error());
+      foreach ($secuenceProductInsertsSQL as $arrayProperties) {
+        $result = $this->createProduct($arrayProperties);
+        var_dump($result);
+        if ($result['hasError'] !== '') {
+          die("Error Inserting Product into the Database: " . $this->error());
           break;
         }
-      }
 
-      $this->closeConnection();
+        $idCreated = $result['idCreated'];
+        switch ($idCreated) {
+          case 1:
+            $secuenceImages = [
+                [
+                    'title' => 'title1',
+                    'featured' => false,
+                    'path' => 'image1.png',
+                    'product_id' => $idCreated
+                ],
+                [
+                    'title' => 'title2',
+                    'featured' => true,
+                    'path' => 'image2.png',
+                    'product_id' => $idCreated
+                ]
+            ];
+            break;
+          case 2:
+            $secuenceImages = [
+                [
+                    'title' => 'title2',
+                    'featured' => true,
+                    'path' => 'image2.png',
+                    'product_id' => $idCreated
+                ]
+            ];
+            break;
+          case 3:
+            $secuenceImages = [
+                [
+                    'title' => 'title4',
+                    'featured' => true,
+                    'path' => 'image4.png',
+                    'product_id' => $idCreated
+                ]
+            ];
+            break;
+          case 4:
+            $secuenceImages = [
+                [
+                    'title' => 'title5',
+                    'featured' => true,
+                    'path' => 'image5.png',
+                    'product_id' => $idCreated
+                ]
+            ];
+            break;
+        }
+        foreach ($secuenceImages as $arrayImagesProperties) {
+          $resultImage = $this->createImageProduct($arrayImagesProperties);
+          if ($resultImage['hasError'] !== '') {
+            die("Error Inserting Image into the Database: " . $this->error());
+            break;
+          }
+        }
+      }
     }
   }
 
@@ -243,7 +273,6 @@ class Database {
   public function executeSQL($query) {
     $rows = array();
     $result = $this->query($query);
-    var_dump($result);
     if ($result === false) {
       return false;
     } else if ($result === true) {
@@ -276,7 +305,7 @@ class Database {
     return "'" . $connection->real_escape_string($value) . "'";
   }
 
-  private function closeConnection() {
+  public function closeConnection() {
     if (self::$connection === false) {
       // Handle error - notify administrator, log to a file, show an error screen, etc.
       return false;
@@ -284,6 +313,17 @@ class Database {
       mysqli_close(self::$connection);
       self::$connection = null;
     }
+  }
+
+  /* --- USER FUNCTIONS ------------------------------------------------- --- */
+
+  public function getUserAll() {
+    $sql = 'select * from user';
+    var_dump($sql);
+    $result = $this->executeSQL($sql);
+    $return = ['result' => $result, 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
   }
 
   public function createUser($user) {
@@ -298,8 +338,65 @@ class Database {
             $this->quote($user["email"]) .
             ");";
     $resuelt = $this->executeSQL($sql);
-    var_dump($resuelt);
-    var_dump($this->error());
+    $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  /* --- PRODUCT FUNCTIONS ---------------------------------------------- --- */
+
+  public function createProduct($product) {
+    $sql = "INSERT INTO 
+                  shopping.product (productname, description, price, quantity)
+            VALUES
+                  (" .
+            $this->quote($product["productname"]) . "," .
+            $this->quote($product["description"]) . "," .
+            $this->quote($product["price"]) . "," .
+            $this->quote($product["quantity"]) .
+            ");";
+    var_dump($sql);
+    $resuelt = $this->executeSQL($sql);
+    $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  public function getProductAll() {
+    $sql = 'select * from shopping.product';
+    var_dump($sql);
+    $result = $this->executeSQL($sql);
+    $return = ['result' => $result, 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  public function getProductImages($idProduct) {
+    $sql = 'select * from shopping.image where product_id=' . $idProduct;
+    var_dump($sql);
+    $result = $this->executeSQL($sql);
+    $return = ['result' => $result, 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  /* --- IMAGE PRODUCT FUNCTIONS ---------------------------------------- --- */
+
+  public function createImageProduct($image) {
+    $sql = "INSERT INTO 
+                  shopping.image (title, featured, path, product_id)
+            VALUES
+                  (" .
+            $this->quote($image["title"]) . "," .
+            $this->quote($image["featured"]) . "," .
+            $this->quote($image["path"]) . "," .
+            $this->quote($image["product_id"]) .
+            ");";
+    var_dump($sql);
+    $resuelt = $this->executeSQL($sql);
+    $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
   }
 
 }
