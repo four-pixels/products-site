@@ -347,7 +347,7 @@ class Database {
   }
 
   /**
-   * Execute a select on the Database: 
+   * Execute a select on the Database will RETURN only one user on array[result]: 
    * <p><code>select * from shopping.user as u where (u.username=$usernameOrEmail or u.email=$usernameOrEmail and u.password=$password limit 1</code></p>
    * @return array ['result'=>array,'hasError'=>string]
    */
@@ -359,6 +359,9 @@ class Database {
     $hasError = $this->error();
     if (empty($result) && $hasError === '') {
       $hasError = "Invalid Username or Password";
+    } else {
+      // IF NO ERRORS RETURN SINGLE USER, NOT AN ARRAY OF USERS
+      $result = $result[0];
     }
     $return = ['result' => $result, 'hasError' => $hasError];
     $this->closeConnection();
@@ -435,17 +438,27 @@ class Database {
     return $return;
   }
 
-  /**
-   * Execute a select on the Database: 
-   * <p><code>select * from shopping.image where product_id= $idProduct</code></p>
-   * @param int $idProduct
-   * @return array ['result' => array, 'hasError' => string]
-   */
-  public function getProductImages($idProduct) {
-    $sql = 'select * from shopping.image where product_id=' . $idProduct;
+  public function getProductById($idProduct, $withImages = false) {
+    $sql = 'select * from shopping.product where id=' . $idProduct . ' limit 1';
     var_dump($sql);
     $result = $this->executeSQL($sql);
-    $return = ['result' => $result, 'hasError' => $this->error()];
+    $hasError = $this->error();
+    if (empty($result) && $hasError === '') {
+      $hasError = "Invalid ID. The Product ID does not exist.";
+    } else {
+      // IF NO ERRORS RETURN SINGLE USER, NOT AN ARRAY OF PRODUCTS
+      $result = $result[0];
+      if ($withImages === true) {
+        $imagesReturn = $this->getProductImages($idProduct);
+        if ($imagesReturn['hasError'] !== '') {
+          $hasError = $imagesReturn['hasErrors'];
+        } else {
+          $images = $imagesReturn['result'];
+          $result[images] = $images;
+        }
+      }
+    }
+    $return = ['result' => $result, 'hasError' => $hasError];
     $this->closeConnection();
     return $return;
   }
@@ -475,6 +488,21 @@ class Database {
     var_dump($sql);
     $resuelt = $this->executeSQL($sql);
     $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  /**
+   * Execute a select on the Database: 
+   * <p><code>select * from shopping.image where product_id= $idProduct</code></p>
+   * @param int $idProduct
+   * @return array ['result' => array, 'hasError' => string]
+   */
+  public function getProductImages($idProduct) {
+    $sql = 'select * from shopping.image where product_id=' . $idProduct;
+    var_dump($sql);
+    $result = $this->executeSQL($sql);
+    $return = ['result' => $result, 'hasError' => $this->error()];
     $this->closeConnection();
     return $return;
   }

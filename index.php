@@ -35,7 +35,7 @@ include 'commons/head.php';
     var_dump($error);
 // RENDER THE ERROR
   else:
-    $user = $userResult['result'][0];
+    $user = $userResult['result'];
     ?>
     <h2><?php echo $user['id'] . '->' . $user['firstname']; ?></h2>
     <div><?php echo $user['lastname']; ?></div>
@@ -115,7 +115,96 @@ include 'commons/head.php';
   ?>
 </section>
 
-
+<section>
+  <h2>SELECT SINGLE PRODUCT WITH IMAGES TRUE  [getProductById($idProduct, $withImages = false)]</h2>
+  <?php
+  $result = $db->getProductById(1, true);
+  if ($result['hasError'] !== '') :
+    $error = $result['hasError'];
+    var_dump($error);
+// RENDER THE ERROR
+  else:
+    $product = $result['result'];
+    ?>
+    <h2><?php echo $product['id'] . '->' . $product['productname']; ?></h2>
+    <div><?php echo $product['description']; ?></div>
+    <div><?php echo $product['price']; ?></div>
+    <div><?php echo $product['quantity']; ?></div>
+    <section>
+      <h3>Images for <?php echo $product['productname']; ?></h3>
+      <?php foreach ($product['images'] as $image) : ?>
+        <div>
+          <?php echo $image['id']; ?>
+          <?php echo $image['title']; ?>
+          <?php echo $image['path']; ?>
+          <?php echo $image['featured']; ?>
+          <?php echo $image['product_id']; ?>
+        </div>
+      <?php endforeach; ?>
+    </section>
+  <?php endif;
+  ?>
+</section>
+<section>
+  <h2>SELECT SINGLE PRODUCT WITH IMAGES FALSE  [getProductById($idProduct, $withImages = false)]</h2>
+  <?php
+  $result = $db->getProductById(1);
+  if ($result['hasError'] !== '') :
+    $error = $result['hasError'];
+    var_dump($error);
+// RENDER THE ERROR
+  else:
+    $product = $result['result'];
+    ?>
+    <h2><?php echo $product['id'] . '->' . $product['productname']; ?></h2>
+    <div><?php echo $product['description']; ?></div>
+    <div><?php echo $product['price']; ?></div>
+    <div><?php echo $product['quantity']; ?></div>
+    <section>
+      <h3>Images for <?php echo $product['productname']; ?></h3>
+      <?php foreach ($product['images'] as $image) : ?>
+        <div>
+          <?php echo $image['id']; ?>
+          <?php echo $image['title']; ?>
+          <?php echo $image['path']; ?>
+          <?php echo $image['featured']; ?>
+          <?php echo $image['product_id']; ?>
+        </div>
+      <?php endforeach; ?>
+    </section>
+  <?php endif;
+  ?>
+</section>
+<section>
+  <h2>SELECT SINGLE PRODUCT INVALID ID [getProductById($idProduct, $withImages = false)]</h2>
+  <?php
+  $result = $db->getProductById(100);
+  if ($result['hasError'] !== '') :
+    $error = $result['hasError'];
+    var_dump($error);
+// RENDER THE ERROR
+  else:
+    $product = $result['result'];
+    ?>
+    <h2><?php echo $product['id'] . '->' . $product['productname']; ?></h2>
+    <div><?php echo $product['description']; ?></div>
+    <div><?php echo $product['price']; ?></div>
+    <div><?php echo $product['quantity']; ?></div>
+    <section>
+      <h3>Images for <?php echo $product['productname']; ?></h3>
+      <?php foreach ($product['images'] as $image) : ?>
+        <div>
+          <?php echo $image['id']; ?>
+          <?php echo $image['title']; ?>
+          <?php echo $image['path']; ?>
+          <?php echo $image['featured']; ?>
+          <?php echo $image['product_id']; ?>
+        </div>
+      <?php endforeach; ?>
+    </section>
+  <?php endif;
+  ?>
+</section>
 
 
 
