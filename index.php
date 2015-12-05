@@ -26,7 +26,6 @@ endif;
 
 <h2>SELECT SPECIFIC USER erick [getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail)]</h2>
 
-
 <?php
 $userResult = $db->getUserByPasswordAndUsernameOrEmail('erick', 'ehz');
 if ($userResult['hasError'] !== '') :
@@ -42,6 +41,25 @@ else:
   <div><?php echo $user['password']; ?></div>
   <div><?php echo $user['email']; ?></div>
 <?php
+endif;
+?>
+
+<h2>SELECT SPECIFIC USER WITH INVALID PASSWORD [getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail)]</h2>
+<?php
+$userResult = $db->getUserByPasswordAndUsernameOrEmail('erik', 'ehz');
+if ($userResult['hasError'] !== '') :
+  $error = $userResult['hasError'];
+  var_dump($error);
+// RENDER THE ERROR
+endif;
+?>
+<h2>SELECT SPECIFIC USER WITH INVALID USERNAME [getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail)]</h2>
+<?php
+$userResult = $db->getUserByPasswordAndUsernameOrEmail('erick', 'ez');
+if ($userResult['hasError'] !== '') :
+  $error = $userResult['hasError'];
+  var_dump($error);
+// RENDER THE ERROR
 endif;
 ?>
 

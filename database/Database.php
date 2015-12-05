@@ -348,14 +348,19 @@ class Database {
 
   /**
    * Execute a select on the Database: 
-   * <p><code>select * from user</code></p>
+   * <p><code>select * from shopping.user as u where (u.username=$usernameOrEmail or u.email=$usernameOrEmail and u.password=$password limit 1</code></p>
    * @return array ['result'=>array,'hasError'=>string]
    */
   public function getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail) {
+    $hasError = '';
     $sql = "select * from shopping.user as u where (u.username=" . $this->quote($usernameOrEmail) . " or u.email=" . $this->quote($usernameOrEmail) . ") and u.password=" . $this->quote($password) . " limit 1";
     var_dump($sql);
     $result = $this->executeSQL($sql);
-    $return = ['result' => $result, 'hasError' => $this->error()];
+    $hasError = $this->error();
+    if (empty($result) && $hasError === '') {
+      $hasError = "Invalid Username or Password";
+    }
+    $return = ['result' => $result, 'hasError' => $hasError];
     $this->closeConnection();
     return $return;
   }
