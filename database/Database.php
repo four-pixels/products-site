@@ -112,7 +112,7 @@ class Database {
             aliquip ex ea commodo consequat. Duis aute irure dolor in 
             reprehenderit in voluptate velit esse cillum dolore eu fugiat 
             nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-            sunt in culpa qui officia deserunt mollit anim id est laborum.\n',
+            sunt in culpa qui officia deserunt mollit anim id est laborum.',
               'price' => '2500',
               'quantity' => '5'
           ],
@@ -131,7 +131,7 @@ class Database {
             Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. 
             Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. 
             Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. 
-            In hac habitasse platea dictumst.\n',
+            In hac habitasse platea dictumst.',
               'price' => '1200',
               'quantity' => '6'
           ],
@@ -146,7 +146,7 @@ class Database {
             Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu 
             tempor congue, eros est euismod turpis, id tincidunt sapien risus a 
             quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque 
-            malesuada nulla a mi.\n',
+            malesuada nulla a mi.',
               'price' => '1200',
               'quantity' => '6'
           ],
@@ -161,14 +161,13 @@ class Database {
             Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. 
             Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. 
             Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. 
-            In hac habitasse platea dictumst.\n',
+            In hac habitasse platea dictumst.',
               'price' => '1200',
               'quantity' => '6'
           ]
       ];
       foreach ($secuenceProductInsertsSQL as $arrayProperties) {
         $result = $this->createProduct($arrayProperties);
-        var_dump($result);
         if ($result['hasError'] !== '') {
           die("Error Inserting Product into the Database: " . $this->error());
           break;
@@ -187,7 +186,7 @@ class Database {
                 [
                     'title' => 'title2',
                     'featured' => true,
-                    'path' => 'image2.png',
+                    'path' => 'bike_demo.png',
                     'product_id' => $idCreated
                 ]
             ];

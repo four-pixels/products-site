@@ -105,12 +105,19 @@ include 'commons/head.php';
         else:
           foreach ($imagesResult['result'] as $imageResult):
             ?>
-            <div>
-              <?php echo $imageResult['id']; ?>
-              <?php echo $imageResult['title']; ?>
-              <?php echo $imageResult['path']; ?>
-              <?php echo $imageResult['featured']; ?>
-              <?php echo $imageResult['product_id']; ?>
+            <div class="thumbnail displa_inline"> 
+              <img class="image_responsive"  alt="<?php echo $imageResult['title']; ?>" src="/images/<?php echo $imageResult['path']; ?>" > 
+              <div class="caption"> 
+                <h3><?php echo $imageResult['title']; ?></h3> 
+                <p>ID:<?php echo $imageResult['id']; ?></p> 
+                <p>Path: <?php echo $imageResult['path']; ?></p>
+                <p>Featured: <?php echo $imageResult['featured'] ? "True" : "False"; ?></p>
+                <p>Belongs to product_id: <?php echo $imageResult['product_id']; ?></p>
+              </div> 
+            </div>
+
+
+
             </div>
             <?php
           endforeach;
