@@ -115,10 +115,6 @@ include 'commons/head.php';
                 <p>Belongs to product_id: <?php echo $imageResult['product_id']; ?></p>
               </div> 
             </div>
-
-
-
-            </div>
             <?php
           endforeach;
         endif;
