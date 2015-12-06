@@ -11,7 +11,7 @@
   <div class="form-group">
     <button type="submit"> Submit</button>
   </div>
-</form>
+</form> 
 <?php include 'commons/footer.php'; ?>
 
 
