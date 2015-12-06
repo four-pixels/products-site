@@ -181,7 +181,7 @@ class Database {
                 [
                     'title' => 'title1',
                     'featured' => false,
-                    'path' => 'image1.png',
+                    'path' => 'bike_demo.png',
                     'product_id' => $idCreated
                 ],
                 [
@@ -197,7 +197,7 @@ class Database {
                 [
                     'title' => 'title2',
                     'featured' => true,
-                    'path' => 'image2.png',
+                    'path' => 'bike_demo.png',
                     'product_id' => $idCreated
                 ]
             ];
@@ -207,7 +207,7 @@ class Database {
                 [
                     'title' => 'title4',
                     'featured' => true,
-                    'path' => 'image4.png',
+                    'path' => 'bike_demo.png',
                     'product_id' => $idCreated
                 ]
             ];
@@ -217,7 +217,7 @@ class Database {
                 [
                     'title' => 'title5',
                     'featured' => true,
-                    'path' => 'image5.png',
+                    'path' => 'bike_demo.png',
                     'product_id' => $idCreated
                 ]
             ];
