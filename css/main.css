@@ -14,6 +14,12 @@ header#main_header {
     background: black;
     color: white; }
 
+/* --- HOME --- */
+#home section {
+  margin: 2em;
+  padding: 3em;
+  background: lightgray; }
+
 /* --- Login/Registration --- */
 #login-registration .form-group label, #login-registration .form-group input {
   display: block; }
