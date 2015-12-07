@@ -17,6 +17,8 @@ and open the template in the editor.
     <link href="/css/animate.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/normalize.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/main.js" type="text/javascript"></script>
   </head>
   <body>
     <header id="main_header">
@@ -44,7 +46,7 @@ and open the template in the editor.
         </ul>
       </nav>
     </header>
-    <section>
+<!--    <section>
       <h2>ADD SERVER VARIABLES</h2>
-      <?php var_dump($_SERVER); ?>
-    </section>
+    <?php var_dump($_SERVER); ?>
+    </section>-->
