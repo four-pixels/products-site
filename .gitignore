@@ -1,4 +1,5 @@
 css/*.map
 *.mwb.bak
 
-libs
+node_modules
+bower_components
