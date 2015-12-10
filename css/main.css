@@ -9,6 +9,7 @@ and open the template in the editor.
 */
 header#main_header {
   position: fixed;
+  width: 100%;
   z-index: 1000; }
   header#main_header .active a {
     background: black;

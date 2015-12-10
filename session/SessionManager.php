@@ -8,10 +8,16 @@ namespace FourPixels\Session;
  * @author Erick
  * @author Rene
  */
-class SessionManager  {
+class SessionManager {
 
   public function __construct() {
     session_start();
+    if ($this->isLogin() == false) {
+      if ($_SERVER['PHP_SELF'] !== '/login.php' && $_SERVER['PHP_SELF'] !== '/x.php') {
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/login.php', true, 301);
+        exit;
+      }
+    }
     return $this;
   }
 
