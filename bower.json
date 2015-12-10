@@ -1,0 +1,21 @@
+{
+  "name": "products-site",
+  "description": "an e-commerce web page for triumph motorcycles",
+  "main": "",
+  "authors": [
+    "91.eahz@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/four-pixels/products-site",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
