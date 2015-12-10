@@ -16,7 +16,7 @@ and open the template in the editor.
     <title>Bikes</title>
     <link href="/css/animate.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/normalize.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+   <!--  <link href="/css/main.css" rel="stylesheet" type="text/css"/> -->
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/libs/js/jquery.js"></script>
     <script src="/js/main.js" type="text/javascript"></script>
