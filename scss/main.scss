@@ -10,6 +10,7 @@ and open the template in the editor.
 header{
   &#main_header{
     position: fixed;
+    width: 100%;
     z-index:1000;
     .active a{
       background: black;

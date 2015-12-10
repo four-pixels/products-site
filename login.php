@@ -30,7 +30,7 @@
     <div class="backRight">
     </div>
     <div class="backLeft">
-      <video class="section-video" poster="/img/logo.png" autoplay="" loop="" preload="none" src="/video/video.mp4" >
+      <video class="section-video"  autoplay="" loop="" preload="none" src="/video/video.mp4" >
         <!-- MP4 source must come first for iOS -->
         <source type="video/mp4" src="/video/video.mp4">
         <!-- Fallback flash player for no-HTML5 browsers with JavaScript turned off -->

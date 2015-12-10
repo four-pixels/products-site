@@ -30,9 +30,6 @@ and open the template in the editor.
           <li class="<?php if ($_SERVER['PHP_SELF'] === '/index.php') echo 'active'; ?>">
             <a href="index.php"> Home</a>
           </li>
-          <li class="<?php if ($_SERVER['PHP_SELF'] === '/registration.php') echo 'active'; ?>">
-            <a href="registration.php">Registration</a>
-          </li>
           <?php if ($session->isLogin() === false): ?>
             <li class="<?php if ($_SERVER['PHP_SELF'] === '/login.php') echo 'active'; ?>">
               <a href="login.php">Login</a>
