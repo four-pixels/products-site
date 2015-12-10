@@ -23,6 +23,7 @@ gulp.task('bower-sort', function() {
   // extension filters (i.e. .js, .css)
   var jsFilter = gulpFilter('*.js', {restore: true});
   var cssFilter = gulpFilter('*.css', {restore: true});
+  var scssFilter = gulpFilter('*.scss', {restore: true});
 
   //retrieve bower main files
   return gulp.src(mainBowerFiles())
@@ -38,7 +39,14 @@ gulp.task('bower-sort', function() {
   //push to css folder into destination path (destPath)
   .pipe(gulp.dest(destPath + '/css'))
   //return mainBowerFiles
-  .pipe(cssFilter.restore);
+  .pipe(cssFilter.restore)
+
+  //filter out .scss files
+  .pipe(scssFilter)
+  //push to css folder into destination path (destPath)
+  .pipe(gulp.dest(destPath + '/scss'))
+  //return mainBowerFiles
+  .pipe(scssFilter.restore);
   
 /*=====  End of BOWER SORT TASK  ======*/
                   

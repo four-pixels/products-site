@@ -16,8 +16,8 @@ var gulp           = require('gulp'),
 
 gulp.task('styles', function(){
   gulp.src('scss/**/*.scss')
-      .pipe(sourcemaps.init())
       .pipe(plumber())
+      .pipe(sourcemaps.init())
       .pipe(sass({
         outputStyle: 'expanded'
       }))
