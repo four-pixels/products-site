@@ -48,9 +48,9 @@ class Database {
                 id INT NOT NULL AUTO_INCREMENT,
                 firstname VARCHAR(45) NOT NULL,
                 lastname VARCHAR(45) NOT NULL,
-                username VARCHAR(45) NOT NULL,
+                username VARCHAR(45) NOT NULL UNIQUE,
                 password VARCHAR(255) NOT NULL,
-                email VARCHAR(128) NOT NULL,
+                email VARCHAR(128) NOT NULL UNIQUE,
                 PRIMARY KEY (id)); ',
           'CREATE TABLE IF NOT EXISTS shopping.product (
                 id INT NOT NULL AUTO_INCREMENT,
