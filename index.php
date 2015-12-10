@@ -173,15 +173,18 @@ include 'commons/head.php';
       <div><?php echo $product['quantity']; ?></div>
       <section>
         <h3>Images for <?php echo $product['productname']; ?></h3>
-        <?php foreach ($product['images'] as $image) : ?>
-          <div>
-            <?php echo $image['id']; ?>
-            <?php echo $image['title']; ?>
-            <?php echo $image['path']; ?>
-            <?php echo $image['featured']; ?>
-            <?php echo $image['product_id']; ?>
-          </div>
-        <?php endforeach; ?>
+        <?php if (isset($product['images'])) : ?>
+          <?php foreach ($product['images'] as $image) : ?>
+            <div>
+              <?php echo $image['id']; ?>
+              <?php echo $image['title']; ?>
+              <?php echo $image['path']; ?>
+              <?php echo $image['featured']; ?>
+              <?php echo $image['product_id']; ?>
+            </div>
+          <?php endforeach; ?>
+          <?php endif;
+        ?>
       </section>
     <?php endif;
     ?>

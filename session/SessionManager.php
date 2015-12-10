@@ -19,7 +19,7 @@ class SessionManager  {
     $_SESSION['fourpixels']['id'] = $user['id'];
     $_SESSION['fourpixels']['username'] = $user['username'];
     return $this;
-  }
+  } 
 
   public function isLogin() {
     if (isset($_SESSION['fourpixels'])) {

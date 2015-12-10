@@ -616,7 +616,8 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
       // Handle error - notify administrator, log to a file, show an error screen, etc.
       return false;
     } else {
-      mysqli_close(self::$connection);
+      if (!is_null(self::$connection))
+        mysqli_close(self::$connection);
       self::$connection = null;
     }
   }
@@ -745,7 +746,7 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
           $hasError = $imagesReturn['hasErrors'];
         } else {
           $images = $imagesReturn['result'];
-          $result[images] = $images;
+          $result['images'] = $images;
         }
       }
     }
