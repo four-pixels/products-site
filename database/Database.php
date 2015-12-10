@@ -637,6 +637,14 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
     return $return;
   }
 
+  public function getUserById($id) {
+    $sql = 'select * from user as u where u.id =' . $id . ' limit 1';
+    $result = $this->executeSQL($sql);
+    $return = ['result' => $result, 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
   /**
    * Execute a select on the Database will RETURN only one user on array[result]: 
    * <p><code>select * from shopping.user as u where (u.username=$usernameOrEmail or u.email=$usernameOrEmail and u.password=$password limit 1</code></p>
