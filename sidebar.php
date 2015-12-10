@@ -1,4 +1,4 @@
-<?php include 'commons/head.php'; ?>
+
   <!-- sidebar navigation -->
   <aside id="sidebar">
     <ul class="products-nav">
@@ -43,4 +43,3 @@
   <!-- sidebar navigation -->
 
 
-<?php include 'commons/footer.php'; ?>
