@@ -1,0 +1,16 @@
+//named colors
+$jumbo     :#6F6F6F;
+$saltbox   :#BABABA;
+$black     :black;
+$white     :white;
+$sepiaSkin :#915A36;
+
+
+//use-case colors
+$bg-color--main      :$jumbo;
+$bg-color--aside     :rgba($black, 0.8);
+
+// font colors
+$color-text--primary             :$white;
+$color-text--secondary--dark     :$sepiaSkin;
+$color-text--secondary--light    :$sepiaSkin;
