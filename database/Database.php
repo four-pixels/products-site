@@ -631,7 +631,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
    */
   public function getUserAll() {
     $sql = 'select * from user';
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $return = ['result' => $result, 'hasError' => $this->error()];
     $this->closeConnection();
@@ -646,7 +645,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
   public function getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail) {
     $hasError = '';
     $sql = "select * from shopping.user as u where (u.username=" . $this->quote($usernameOrEmail) . " or u.email=" . $this->quote($usernameOrEmail) . ") and u.password=" . $this->quote($password) . " limit 1";
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $hasError = $this->error();
     if (empty($result) && $hasError === '') {
@@ -709,7 +707,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
             $this->quote($product["price"]) . "," .
             $this->quote($product["quantity"]) .
             ");";
-    var_dump($sql);
     $resuelt = $this->executeSQL($sql);
     $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
     $this->closeConnection();
@@ -723,7 +720,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
    */
   public function getProductAll() {
     $sql = 'select * from shopping.product';
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $return = ['result' => $result, 'hasError' => $this->error()];
     $this->closeConnection();
@@ -732,7 +728,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
 
   public function getProductById($idProduct, $withImages = false) {
     $sql = 'select * from shopping.product where id=' . $idProduct . ' limit 1';
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $hasError = $this->error();
     if (empty($result) && $hasError === '') {
@@ -777,7 +772,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
             $this->quote($image["path"]) . "," .
             $this->quote($image["product_id"]) .
             ");";
-    var_dump($sql);
     $resuelt = $this->executeSQL($sql);
     $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
     $this->closeConnection();
@@ -792,7 +786,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
    */
   public function getProductImages($idProduct) {
     $sql = 'select * from shopping.image where product_id=' . $idProduct;
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $return = ['result' => $result, 'hasError' => $this->error()];
     $this->closeConnection();
