@@ -47,7 +47,3 @@ and open the template in the editor.
         </ul>
       </nav>
     </header>
-<!--    <section>
-      <h2>ADD SERVER VARIABLES</h2>
-    <?php var_dump($_SERVER); ?>
-    </section>-->

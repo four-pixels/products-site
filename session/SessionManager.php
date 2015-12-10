@@ -13,7 +13,7 @@ class SessionManager {
   public function __construct() {
     session_start();
     if ($this->isLogin() == false) {
-      if ($_SERVER['PHP_SELF'] !== '/login.php' && $_SERVER['PHP_SELF'] !== '/x.php') {
+      if (!in_array($_SERVER['PHP_SELF'], ['/login.php', '/x.php', '/login_validation.php', '/validation.php'])) {
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/login.php', true, 301);
         exit;
       }
@@ -25,7 +25,22 @@ class SessionManager {
     $_SESSION['fourpixels']['id'] = $user['id'];
     $_SESSION['fourpixels']['username'] = $user['username'];
     return $this;
-  } 
+  }
+
+  public function setFlashMessage($message) {
+    $_SESSION['message'] = $message;
+    return $this;
+  }
+
+  public function getFlashMessage() {
+    if (isset($_SESSION['message'])) {
+      $message = $_SESSION['message'];
+      unset($_SESSION['message']);
+      return $message;
+    } else {
+      return null;
+    }
+  }
 
   public function isLogin() {
     if (isset($_SESSION['fourpixels'])) {

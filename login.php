@@ -1,17 +1,17 @@
 <?php include 'commons/head.php'; ?>
-
+<?php $error = $session->getFlashMessage(); ?>
 <style type="text/css">
   body {
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
     width: 100% !important;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
   }
   .section-video{
-    height: 1400px;
+    height: 135vh;
     position: relative;
-    top: -180px;
+    top: -18vh;
   }
   .video-overlay {
     background: url(/images/dot.png) rgba(0, 0, 0, 0.5);
@@ -19,7 +19,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: 34;
     opacity: 0.7;
   }
@@ -28,6 +28,7 @@
 
   <div id="back">
     <div class="backRight">
+      <div class="video-overlay"></div> 
     </div>
     <div class="backLeft">
       <video class="section-video"  autoplay="" loop="" preload="none" src="/video/video.mp4" >
@@ -68,13 +69,14 @@
             <button id="goLeft" type="button" class="off">Login</button>
             <button type="submit">Sign up</button>
           </form>
+          <?php if (!is_null($error) && $error !== 'Invalid Username or Password'): ?> 
+            <div class="error"><?php echo $error; ?></div>
+          <?php endif; ?>
         </div>
       </div>
       <div class="right">
         <div class="content">
           <h2>Login</h2>
-
-
           <form action="login_validation.php" method="POST">
             <div class="form-group">
               <label class="control-label required" for="user_username">Username or email</label>
@@ -87,6 +89,9 @@
             <button id="goRight" type="button" class="off">Sign Up</button>
             <button id="login" type="submit">Login</button>
           </form>
+          <?php if (!is_null($error) && $error === 'Invalid Username or Password'): ?> 
+            <div class="error"><?php echo $error; ?></div>
+          <?php endif; ?>
 
 
         </div>
@@ -114,6 +119,9 @@
       });
     });
     $("video").prop('muted', true); //mute
+<?php if (!is_null($error) && $error !== 'Invalid Username or Password'): ?>
+      $('#goRight').trigger('click');
+<?php endif; ?>
   });
 </script>
 

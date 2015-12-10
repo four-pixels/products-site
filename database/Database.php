@@ -48,9 +48,9 @@ class Database {
                 id INT NOT NULL AUTO_INCREMENT,
                 firstname VARCHAR(45) NOT NULL,
                 lastname VARCHAR(45) NOT NULL,
-                username VARCHAR(45) NOT NULL,
+                username VARCHAR(45) NOT NULL UNIQUE,
                 password VARCHAR(255) NOT NULL,
-                email VARCHAR(128) NOT NULL,
+                email VARCHAR(128) NOT NULL UNIQUE,
                 PRIMARY KEY (id)); ',
           'CREATE TABLE IF NOT EXISTS shopping.product (
                 id INT NOT NULL AUTO_INCREMENT,
@@ -631,9 +631,28 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
    */
   public function getUserAll() {
     $sql = 'select * from user';
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $return = ['result' => $result, 'hasError' => $this->error()];
+    $this->closeConnection();
+    return $return;
+  }
+
+  /**
+   * Execute a select on the Database will RETURN only one user on array[result] based on the ID: 
+   * <p><code>select * from shopping.user as u where u.id=$id limit 1</code></p>
+   * @return array ['result'=>array,'hasError'=>string]
+   */
+  public function getUserById($id) {
+    $sql = 'select * from user as u where u.id =' . $id . ' limit 1';
+    $result = $this->executeSQL($sql);
+    $hasError = $this->error();
+    if (empty($result) && $hasError === '') {
+      $hasError = "Invalid ID. User not found.";
+    } else {
+      // IF NO ERRORS RETURN SINGLE USER, NOT AN ARRAY OF USERS
+      $result = $result[0];
+    }
+    $return = ['result' => $result, 'hasError' => $hasError];
     $this->closeConnection();
     return $return;
   }
@@ -646,7 +665,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
   public function getUserByPasswordAndUsernameOrEmail($password, $usernameOrEmail) {
     $hasError = '';
     $sql = "select * from shopping.user as u where (u.username=" . $this->quote($usernameOrEmail) . " or u.email=" . $this->quote($usernameOrEmail) . ") and u.password=" . $this->quote($password) . " limit 1";
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $hasError = $this->error();
     if (empty($result) && $hasError === '') {
@@ -709,7 +727,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
             $this->quote($product["price"]) . "," .
             $this->quote($product["quantity"]) .
             ");";
-    var_dump($sql);
     $resuelt = $this->executeSQL($sql);
     $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
     $this->closeConnection();
@@ -723,7 +740,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
    */
   public function getProductAll() {
     $sql = 'select * from shopping.product';
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $return = ['result' => $result, 'hasError' => $this->error()];
     $this->closeConnection();
@@ -732,7 +748,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
 
   public function getProductById($idProduct, $withImages = false) {
     $sql = 'select * from shopping.product where id=' . $idProduct . ' limit 1';
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $hasError = $this->error();
     if (empty($result) && $hasError === '') {
@@ -777,7 +792,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
             $this->quote($image["path"]) . "," .
             $this->quote($image["product_id"]) .
             ");";
-    var_dump($sql);
     $resuelt = $this->executeSQL($sql);
     $return = ['result' => $resuelt, 'idCreated' => mysqli_insert_id($this->connect()), 'hasError' => $this->error()];
     $this->closeConnection();
@@ -792,7 +806,6 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
    */
   public function getProductImages($idProduct) {
     $sql = 'select * from shopping.image where product_id=' . $idProduct;
-    var_dump($sql);
     $result = $this->executeSQL($sql);
     $return = ['result' => $result, 'hasError' => $this->error()];
     $this->closeConnection();
