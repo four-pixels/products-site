@@ -637,10 +637,22 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
     return $return;
   }
 
+  /**
+   * Execute a select on the Database will RETURN only one user on array[result] based on the ID: 
+   * <p><code>select * from shopping.user as u where u.id=$id limit 1</code></p>
+   * @return array ['result'=>array,'hasError'=>string]
+   */
   public function getUserById($id) {
     $sql = 'select * from user as u where u.id =' . $id . ' limit 1';
     $result = $this->executeSQL($sql);
-    $return = ['result' => $result, 'hasError' => $this->error()];
+    $hasError = $this->error();
+    if (empty($result) && $hasError === '') {
+      $hasError = "Invalid ID. User not found.";
+    } else {
+      // IF NO ERRORS RETURN SINGLE USER, NOT AN ARRAY OF USERS
+      $result = $result[0];
+    }
+    $return = ['result' => $result, 'hasError' => $hasError];
     $this->closeConnection();
     return $return;
   }

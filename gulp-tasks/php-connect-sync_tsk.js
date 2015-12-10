@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 gulp.task('php-connect-sync', function() {
   connect.server({}, function (){
    browserSync.init({
-        proxy: "products.4pixles.localhost.co",
+        proxy: "127.0.0.1:8888",
         host:'localhost'
     });
   });
