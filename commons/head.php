@@ -18,7 +18,7 @@ and open the template in the editor.
     <link href="/css/normalize.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="/styles/main.css">
-    <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/libs/js/jquery.js"></script>
     <script src="/js/main.js" type="text/javascript"></script>
   </head>
   <body>
