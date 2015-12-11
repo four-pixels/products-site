@@ -4,7 +4,7 @@
  *
  */
 
-#sidebar{
+#nav{
   background-color: $bg-color--aside;
   max-width: 20%;
   padding: 3em 2em;
@@ -13,6 +13,6 @@
 .products-nav__item{
   a{
     text-align: center;
-    color: $color-text--title-sidebar;
+    color: $color-text--primary;
   }
 }

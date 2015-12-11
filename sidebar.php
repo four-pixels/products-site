@@ -1,6 +1,6 @@
 
   <!-- sidebar navigation -->
-  <aside id="sidebar">
+  <nav id="nav">
     <ul class="products-nav">
       <li class="products-nav__item">
         <a href="#">
@@ -39,7 +39,7 @@
         </a>
       </li>
     </ul>    
-  </aside>
+  </nav>
   <!-- sidebar navigation -->
 
 

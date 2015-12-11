@@ -1,7 +1,18 @@
 <?php include 'commons/head.php'; ?>
+<style type="text/css" media="screen">
+  .box{
+    width: 90%;
+    height: 90vh;
+    margin: 0 auto;
+    margin-top: 5vh;
+    overflow: auto;
+  }
+</style>
+<div class="box">
 
-<section id="home">
-  <h1>HOME PAGE</h1>
-</section>
+<?php include 'sidebar.php' ?>
+</div>
+
+
 
 <?php include 'commons/footer.php'; ?>
