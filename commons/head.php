@@ -17,6 +17,7 @@ and open the template in the editor.
     <link href="/css/animate.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/normalize.min.css" rel="stylesheet" type="text/css"/>
    <!--  <link href="/css/main.css" rel="stylesheet" type="text/css"/> -->
+   <link href='https://fonts.googleapis.com/css?family=Archivo+Black|Source+Sans+Pro:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/libs/js/jquery.js"></script>
     <script src="/js/main.js" type="text/javascript"></script>

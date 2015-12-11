@@ -6,8 +6,8 @@
 
 .product{
   background:  linear-gradient(
-      rgba($black, 0.6), 
-      rgba($black, 0.6)
+      rgba($bg-color--main, 0.9), 
+      rgba($bg-color--main, 0.6)
     ),url("/images/productPage_bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -21,7 +21,7 @@
 .product__info{
   min-height:35%;
   color: $color-text--primary;
-  font-size: 1.2em;
+  font-size: 1em;
   padding: 5em;
 }
 
@@ -31,6 +31,8 @@
 
 .product__description{
   float:right;
+  font-weight: $font-weight--light;
+  line-height: $line-height;
 }
 
 .product__thumbnails__container,
@@ -42,9 +44,15 @@
   text-align: right;
   margin-top: 1em;
   vertical-align:center;
+  text-transform: uppercase;
+  font-weight: $font-weight--bold;
+  font-family: $font-secondary;
+  color: $color-text--secondary--dark;
   
     span{
+      color: $color-text--primary;
       font-size: 2em;
+      font-weight: $font-weight--light;
       margin-left: 0.5em;
     }
 
@@ -57,7 +65,6 @@
     overflow: hidden;
     position: relative;
     min-height:65%;
-    float: right;
     img{
     display: block;
     position: absolute;
@@ -70,7 +77,8 @@
 
 #product__title{
   color: $color-text--primary;
-  font-size: 12em;
+  font-size: 8em;
+  font-family: $font-title--large;
   margin: 0;
   padding-right: 0.2em;
 }
