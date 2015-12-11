@@ -12,12 +12,14 @@ class SessionManager {
 
   public function __construct() {
     session_start();
+
     if ($this->isLogin() == false) {
       if (!in_array($_SERVER['PHP_SELF'], ['/login.php', '/x.php', '/login_validation.php', '/validation.php'])) {
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/login.php', true, 301);
         exit;
       }
     }
+
     return $this;
   }
 
