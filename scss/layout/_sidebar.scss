@@ -6,11 +6,15 @@
 
 #nav{
   background-color: $bg-color--aside;
-  max-width: 20%;
-  padding: 3em 2em;
+  max-width: 18%;
+  padding: 3em;
+  position: relative;
+  z-index: 10;
 }
 
 .products-nav__item{
+  margin: 2em 0;
+
   a{
     text-align: center;
     color: $color-text--primary;

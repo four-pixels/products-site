@@ -1,4 +1,5 @@
 <?php include 'commons/head.php'; ?>
+<?php include 'sidebar.php'; ?>
 <section class="product">
   <div class="product__info">
     <div class="product__thumbnails__container">

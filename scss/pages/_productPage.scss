@@ -17,6 +17,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
 
 
@@ -26,33 +29,34 @@
   min-height:35%;
   color: $color-text--primary;
   font-size: 1em;
-  padding: 5em;
+  overflow: hidden;
+  padding: 4em;
 }
 
 .product__thumbnails__container{
   float: left;
     ul{
       float: right;
-      margin-right: 20%;
+      margin-right: 10%;
     }
 }
 
 .thumbnail__image {
-    height: 6em;
-    width: 6em;
-    min-width:90px;
-    min-height: 90px;
-    display: inline-block;
-    filter: grayscale(1);
-    margin-left: .5em;
-    position: relative;
-
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    display: inline-block;
+    height: 6em;
+    min-width:90px;
+    min-height: 90px;
+    filter: grayscale(1);
+    margin-left: .5em;
+    position: relative;
     transition: width .6s ease,
                 filter 3s ease;
+    width: 6em;
+
     &::after{
       content: '';
       height: 0.2em;
