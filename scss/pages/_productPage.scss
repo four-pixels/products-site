@@ -1,0 +1,17 @@
+/**
+ *
+ * Product page styles
+ *
+ */
+
+.product{
+  background:  linear-gradient(
+      rgba($black, 0.6), 
+      rgba($black, 0.6)
+    ),url("/images/productPage_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
