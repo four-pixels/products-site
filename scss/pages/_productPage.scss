@@ -9,6 +9,10 @@
       rgba($bg-color--main, 0.9), 
       rgba($bg-color--main, 0.6)
     ),url("/images/productPage_bg.jpg");
+  // background:  linear-gradient(
+  //     rgba($bg-color--main, 0.9), 
+  //     rgba($bg-color--main, 0.6)
+  //   ),url("/images/thunderbird/27-Thunderbird-15-Gallery-1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,6 +31,56 @@
 
 .product__thumbnails__container{
   float: left;
+    ul{
+      float: right;
+      margin-right: 20%;
+    }
+}
+
+.thumbnail__image {
+    height: 6em;
+    width: 6em;
+    min-width:90px;
+    min-height: 90px;
+    display: inline-block;
+    filter: grayscale(1);
+    margin-left: .5em;
+    position: relative;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: width .6s ease,
+                filter 3s ease;
+    &::after{
+      content: '';
+      height: 0.2em;
+      position: absolute;
+      width: 0;
+      background-color: $color--secondary;
+      bottom: 0;
+      transition: width .3s ease;
+    }
+
+    &:hover{
+      width: 8em;
+      filter: grayscale(0);
+
+      &::after{
+        width:100%;
+      }
+    }
+}
+
+.thumbnail__image-1{
+  background-image: url("/images/thunderbird/27-Thunderbird-15-Gallery-1.jpg");
+}
+.thumbnail__image-2{
+  background-image: url("/images/thunderbird/27-Thunderbird-15-Gallery-2.jpg");
+}
+.thumbnail__image-3{
+  background-image: url("/images/thunderbird/27-Thunderbird-15-Gallery-3.jpg");
 }
 
 .product__description{
@@ -64,15 +118,17 @@
     text-align: right;
     overflow: hidden;
     position: relative;
-    min-height:65%;
-    img{
-    display: block;
-    position: absolute;
-    bottom: -25%;
-    right: -10%;
-    transform: scaleX(-1);
-    width: 80%;
-    }
+    min-height:65%;   
+}
+
+#product__image{
+  display: block;
+  position: absolute;
+  bottom: -25%;
+  right: -10%;
+  transform: scaleX(-1);
+  // visibility: hidden;
+  width: 80%;
 }
 
 #product__title{
@@ -82,3 +138,5 @@
   margin: 0;
   padding-right: 0.2em;
 }
+
+
