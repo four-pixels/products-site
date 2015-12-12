@@ -54,7 +54,7 @@
     margin-left: .5em;
     position: relative;
     transition: width .6s ease,
-                filter 3s ease;
+                filter 2s ease;
     width: 6em;
 
     &::after{
@@ -136,7 +136,7 @@
 }
 
 #product__title{
-  color: $color-text--primary;
+  color: rgba($color-text--primary, 0.8);
   font-size: 8em;
   font-family: $font-title--large;
   margin: 0;
