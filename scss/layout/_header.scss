@@ -5,14 +5,46 @@
  */
 
 
-
-header{
-  &#main_header{
+#main_header{
     position: fixed;
     z-index:1000;
+    width:100%;
+    display: flex;
     .active a{
       background: black;
       color:white;
     }
+ }
+
+ #main-nav{
+  margin-left: auto;
+    flex-basis: 30%;
+    flex-shrink: 0;
+    align-self: center;
+    a{
+      color: $color-text--primary;
+      position: relative;
+      padding-bottom: 5px;
+      &:hover::after{
+        width: 100%;
+      }
+      &::after{
+      content: '';
+      height: 0.1em;
+      position: absolute;
+      width: 0;
+      background-color: $color--secondary;
+      bottom: 0;
+      left: 0;
+      transition: width .3s ease;
+      }
+    }
+  ul{
+    display: flex;
+    justify-content: space-around;
+    font-weight: $font-weight--light;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
-}
+ }
