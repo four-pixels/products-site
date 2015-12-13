@@ -1,9 +1,4 @@
-<?php
-require_once 'session/SessionManager.php';
-require_once 'database/Database.php';
-$session = new FourPixels\Session\SessionManager();
-?>
-
+<?php require_once 'configFolder/databaseFunctions/databaseConnect.php'; ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -24,9 +19,6 @@ and open the template in the editor.
   </head>
   <body>
     <header id="main_header">
-      <div id="logo">
-        <a href="index.php"><h1>Some Logo</h1></a>
-      </div>
       <nav id="main-nav">
         <ul>
           <li class="<?php if ($_SERVER['PHP_SELF'] === '/index.php') echo 'active'; ?>">
@@ -36,16 +28,12 @@ and open the template in the editor.
             <a href="x.php">DEVELOPMENT STUDD</a>
           </li>
           <li><a href="#">Cart</a></li>
-          <?php if ($session->isLogin() === false): ?>
             <li class="<?php if ($_SERVER['PHP_SELF'] === '/login.php') echo 'active'; ?>">
               <a href="login.php">Login</a>
-            </li>
-          <?php endif; ?>
-          <?php if ($session->isLogin() === true): ?>
+            </li>       
             <li>
               <a href="logout.php">Logout</a>
             </li>
-          <?php endif; ?>
         </ul>
       </nav>
     </header>
