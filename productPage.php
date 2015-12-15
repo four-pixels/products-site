@@ -1,6 +1,18 @@
 <?php require_once 'configFolder/databaseFunctions/databaseConnect.php'; ?>
 <?php require_once 'configFolder/sessions.php'; ?>
 
+<?php 
+$isAjax = true;
+/* AJAX check  */
+if(!(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+  /* special ajax here */
+  
+  include 'commons/head.php'; 
+  echo '<section class="product on-seen">';
+
+}
+ ?>
+
 <?php if (isLoggedIn() === false) : ?>
   <meta http-equiv="refresh" content="0;URL='http://<?php echo $_SERVER['HTTP_HOST'] ?>/login.php'" /> 
   <?php endif; ?>
@@ -28,3 +40,15 @@
     <?php $image = select("image WHERE product_id =" .$product[0]['id']. " and featured = true") ?>
     <img id="product__image" src="images/<?php echo $image[0]['path'] ?>" alt="">
   </div>
+
+<?php 
+
+/* AJAX check  */
+if(!(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+  /* special ajax here */
+  
+  echo '</section>';
+  include 'commons/footer.php'; 
+}
+ ?>
+

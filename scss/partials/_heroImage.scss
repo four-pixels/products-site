@@ -1,0 +1,30 @@
+/**
+ *
+ * hero image 
+ *
+ */
+
+
+
+#heroImage{
+  display: none;
+  @include med-screen{
+  display: flex;
+  background: red;
+  height: 80vh;
+  justify-content: center;
+  background:  linear-gradient(
+      rgba($bg-color--main, 0.5), 
+      rgba($bg-color--main, 0.5)
+    ),url("/images/heroImage.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  }
+  img{
+    flex-basis: 70%;
+    opacity: 0.8;
+    // padding: 8em 0;
+  }
+}
+

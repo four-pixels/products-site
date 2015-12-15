@@ -1,0 +1,9 @@
+
+//media query mixin for desktop smaller than 1130px
+
+@mixin med-screen {
+  @media screen and (max-width: #{$large-screen}) {
+    @content;
+  }
+}
+

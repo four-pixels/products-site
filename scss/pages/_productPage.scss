@@ -18,6 +18,10 @@
   left: 0;
   width: 100vw;
 
+transition: all 0.5s ease-out;
+  @include med-screen{ 
+    display:none;
+  }
 
 }
 
@@ -129,7 +133,7 @@
   bottom: -15%;
   right: -10%;
   transform: scaleX(-1);
-  width: 80%;
+  width: 70%;
 }
 
 #product__title{
@@ -141,3 +145,19 @@
 }
 
 
+
+.on-seen{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+  .product__img-container{
+    order: -1;
+    overflow-y: auto;
+    height: 0;
+  }
+  .product__description{
+    overflow-y: auto;
+    height:auto;
+  }
+}

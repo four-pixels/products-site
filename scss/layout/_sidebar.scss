@@ -7,16 +7,48 @@
 #nav{
   background-color: $bg-color--aside;
   max-width: 18%;
-  padding: 3em;
+  padding:3em;
   position: relative;
   z-index: 10;
+  @include med-screen{
+    max-width: 100%;
+   background: $bg-color--main; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+}
+
+.products-nav{
+  @include med-screen{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+
 }
 
 .products-nav__item{
   margin: 2em 0;
+  transition: background .3s ease;
 
   a{
     text-align: center;
     color: $color-text--primary;
+  }
+  &:hover,
+  &.active{
+    background-color: darken($bg-color--main, 4%);
+    border-radius: 10px;
+  }
+
+  @include med-screen{
+
+      display: inline-block;
+      width: 280px;
+      margin: auto;
+      margin-bottom: 5em;
+    
   }
 }

@@ -1,4 +1,5 @@
 <?php include 'commons/head.php'; ?>
+<?php include 'heroImage.php' ?>
 <?php if (isLoggedIn() === false) : ?>
   <meta http-equiv="refresh" content="0;URL='http://<?php echo $_SERVER['HTTP_HOST'] ?>/login.php'" /> 
   <?php else: ?>
@@ -13,7 +14,12 @@
 
 
   $(document).on('click','.products-nav__link', function(e){
-    e.preventDefault();
+   
+$('.products-nav__item.active').removeClass('active');
+$(this).closest('.products-nav__item').addClass('active');
+
+    if($(document).width()>1130)
+     e.preventDefault();
     getProduct($(this).attr('href'));
    
   })

@@ -27,8 +27,8 @@
 
   <div id="back">
   <div id="logoContainer">
-    <img src="images/triumphLogo.svg" alt="">
-    <img src="images/triumphLogo.svg" alt="">
+    <img src="images/triumphLogo.svg" alt="Triumph Logo">
+    <img src="images/triumphLogo.svg" alt="Triumph Logo">
   </div>
     <div class="backRight">
       <div class="video-overlay"></div> 
