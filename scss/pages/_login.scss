@@ -5,6 +5,19 @@
  */
 
 
+#logoContainer{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 35;
+  display: flex;
+    img{
+      margin: auto;
+      width: 30%;
+    }
+}
+
+
 #login-registration{
   .form-group{
     label,input{
@@ -35,7 +48,8 @@
     right: 0;
     width: 50%;
     height: 100%;
-    background: #3498db /*url(https://download.unsplash.com/photo-1429041966141-44d228a42775)*/;
+    
+    ground: #3498db /*url(https://download.unsplash.com/photo-1429041966141-44d228a42775)*/;
     background-size: cover;
     background-position: 50% 50%;
   }

@@ -26,6 +26,10 @@
 <section id="login-registration">
 
   <div id="back">
+  <div id="logoContainer">
+    <img src="images/triumphLogo.svg" alt="">
+    <img src="images/triumphLogo.svg" alt="">
+  </div>
     <div class="backRight">
       <div class="video-overlay"></div> 
 
