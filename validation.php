@@ -2,8 +2,14 @@
 require 'configFolder/databaseFunctions/databaseConnect.php';
 $userRegistrationFormData = $_POST['user'];
 
-insertNewUser($userRegistrationFormData);
-header('Location: http://' . $_SERVER['HTTP_HOST'] . '/index.php', true, 301);
+$result = insertNewUser($userRegistrationFormData);
+
+if($result){
+  header('Location: http://' . $_SERVER['HTTP_HOST'] . '/index.php', true, 301);  
+}else{
+  header('Location: http://' . $_SERVER['HTTP_HOST'] . '/login.php', true, 301);
+}
+
   exit; // THIS WILL STOP PHP to execute any code below this like
 
 // $db = new \FourPixels\Database\Database();

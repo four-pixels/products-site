@@ -1,4 +1,5 @@
 <?php require_once 'configFolder/databaseFunctions/databaseConnect.php'; ?>
+<?php require_once 'configFolder/sessions.php' ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -29,12 +30,16 @@ and open the template in the editor.
             <a href="x.php">DEVELOPMENT STUDD</a>
           </li>
           <li><a href="#">Cart</a></li>
+            <?php if (isLoggedIn() === false) : ?>
             <li class="<?php if ($_SERVER['PHP_SELF'] === '/login.php') echo 'active'; ?>">
               <a href="login.php">Login</a>
-            </li>       
+            </li>    
+            <?php else : ?>   
             <li>
               <a href="logout.php">Logout</a>
             </li>
+          <?php endif ?>
+
         </ul>
       </nav>
     </header>

@@ -1,6 +1,12 @@
 <?php require_once 'configFolder/databaseFunctions/databaseConnect.php'; ?>
-<?php $product = select("product where id =".$_GET['id'])  ?>
+<?php require_once 'configFolder/sessions.php'; ?>
 
+<?php if (isLoggedIn() === false) : ?>
+  <meta http-equiv="refresh" content="0;URL='http://<?php echo $_SERVER['HTTP_HOST'] ?>/login.php'" /> 
+  <?php endif; ?>
+
+<?php $product = select("product where id =".$_GET['id'])  ?>
+  
   <div class="product__info">
     <div class="product__thumbnails__container">
       <ul>

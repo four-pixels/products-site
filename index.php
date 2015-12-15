@@ -1,7 +1,11 @@
 <?php include 'commons/head.php'; ?>
+<?php if (isLoggedIn() === false) : ?>
+  <meta http-equiv="refresh" content="0;URL='http://<?php echo $_SERVER['HTTP_HOST'] ?>/login.php'" /> 
+  <?php else: ?>
 <?php include 'sidebar.php'; ?>
 <section class="product">
 </section>
+<?php endif; ?>
 <script>
   $(function() {
      getProduct('productPage.php?id=1');

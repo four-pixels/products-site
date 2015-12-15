@@ -1,5 +1,5 @@
 <?php include 'commons/head.php'; ?>
-<?php $error = null ?>
+<?php $error = getError()?>
 
 <style type="text/css">
   body {

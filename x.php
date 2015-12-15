@@ -1,5 +1,11 @@
 <?php
 include 'commons/head.php';
+require_once 'session/SessionManager.php' ;
+require_once 'database/Database.php' ;
+
+
+$session = new FourPixels\Session\SessionManager();
+$db = new FourPixels\Database\Database();
 ?>
 <div id="home">
   <section>
