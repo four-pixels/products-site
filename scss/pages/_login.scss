@@ -144,6 +144,12 @@
     background: #363A3D;
   }
 
+  .error{
+    color: $color-text--primary;
+    font-style: italic;
+    font-weight: $font-weight--light;
+  }
+
 
 }
 .image_responsive{
@@ -157,3 +163,4 @@
   border-radius: 5px;
   padding: 0.2em;
 }
+
