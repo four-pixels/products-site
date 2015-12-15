@@ -154,10 +154,23 @@ transition: all 0.5s ease-out;
   .product__img-container{
     order: -1;
     overflow-y: auto;
-    height: 0;
+    #product__image{
+      position: relative;
+    }
   }
-  .product__description{
+  .product__info{
     overflow-y: auto;
-    height:auto;
+    min-height:auto;
   }
+}
+
+#singleProduct{
+  display: flex;
+   background:  linear-gradient(
+      rgba($bg-color--main, 0.9), 
+      rgba($bg-color--main, 0.6)
+    ),url("/images/productPage_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
