@@ -1,4 +1,13 @@
 <?php
+require 'configFolder/databaseFunctions/databaseConnect.php';
+$userForm = $_POST['user'];
+$userCheck = checkIfUserExists($userForm);
+if($userCheck){
+  header('Location: http://' . $_SERVER['HTTP_HOST'] . '/index.php', true, 301);
+}else{
+  header('Location: http://' . $_SERVER['HTTP_HOST'] . '/login.php', true, 301);
+}
+exit;
 
 require_once 'database/Database.php';
 require_once 'session/SessionManager.php';

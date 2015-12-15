@@ -1,5 +1,6 @@
 <?php include 'commons/head.php'; ?>
-<?php $error = $session->getFlashMessage(); ?>
+<?php $error = null ?>
+
 <style type="text/css">
   body {
     height: 100vh;
@@ -47,8 +48,8 @@
           <h2>Sign Up</h2>
           <form id="UserRegistration" action="validation.php" method="POST" >
             <div class="form-group">
-              <label class="control-label required" for="user_fistname">First name</label>
-              <input id="user_fistname" type="text" name="user[firstname]" required="required" />
+              <label class="control-label required" for="user_firstname">First name</label>
+              <input id="user_firstname" type="text" name="user[firstname]" required="required" />
             </div>
             <div class="form-group">
               <label class="control-label required" for="user_lastname">Last name</label>

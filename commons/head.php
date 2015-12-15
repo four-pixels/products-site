@@ -18,6 +18,7 @@ and open the template in the editor.
     <script src="/js/main.js" type="text/javascript"></script>
   </head>
   <body>
+  <?php if ($_SERVER['PHP_SELF'] !== '/login.php') : ?>
     <header id="main_header">
       <nav id="main-nav">
         <ul>
@@ -37,3 +38,4 @@ and open the template in the editor.
         </ul>
       </nav>
     </header>
+  <?php endif; ?>
