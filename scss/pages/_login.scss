@@ -93,20 +93,20 @@
   .content {
     width: 250px;
     margin: 0 auto;
-    top: 30%;
+    top: 20%;
     position: absolute;
     left: 50%;
     margin-left: -125px;
   }
 
   .content h2 {
-    color: #03A9F4;
-    font-weight: 300;
+    color: $color-text--secondary--dark;
+    font-weight: $font-weight--light;
     font-size: 35px;
   }
 
   button {
-    background: #03A9F4;
+    background: $color-text--secondary--dark;
     padding: 10px 16px;
     width: auto;
     font-weight: 600;
@@ -124,23 +124,23 @@
   }
 
   button:hover {
-    background: #0288D1;
+    background: darken($color-text--secondary--dark, 10%);
     box-shadow: 0 4px 7px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
   }
   .off {
     background: none;
-    color: #03A9F4;
+    color: $color-text--secondary--dark;
     box-shadow: none;
   }
 
   .right .off:hover {
     background: #eee;
-    color: #03A9F4;
+/*     color: #03A9F4; */
     box-shadow: none;
   }
   .left .off:hover {
     box-shadow: none;
-    color: #03A9F4;
+/*     color: #03A9F4; */
     background: #363A3D;
   }
 

@@ -6,8 +6,6 @@
     height: 100vh;
     overflow: hidden;
     width: 100% !important;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
   }
   .section-video{
     height: 135vh;
@@ -30,6 +28,7 @@
   <div id="back">
     <div class="backRight">
       <div class="video-overlay"></div> 
+
     </div>
     <div class="backLeft">
       <video class="section-video"  autoplay="" loop="" preload="none" src="/video/video.mp4" >

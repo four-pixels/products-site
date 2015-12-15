@@ -9,10 +9,6 @@
       rgba($bg-color--main, 0.9), 
       rgba($bg-color--main, 0.6)
     ),url("/images/productPage_bg.jpg");
-  // background:  linear-gradient(
-  //     rgba($bg-color--main, 0.9), 
-  //     rgba($bg-color--main, 0.6)
-  //   ),url("/images/thunderbird/27-Thunderbird-15-Gallery-1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -133,7 +129,6 @@
   bottom: -15%;
   right: -10%;
   transform: scaleX(-1);
-  // visibility: hidden;
   width: 80%;
 }
 
