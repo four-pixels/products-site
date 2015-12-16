@@ -12,6 +12,18 @@
   h1{
     font-weight: $font-weight--light;
   }
+  .link{
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    line-height: 64px;
+    border-radius:  3px;
+    transition: all .3s ease-out;
+    &:hover{
+      color: $color--secondary;
+      background: white;
+    }
+  }
   color: white;
   margin:  auto;
 }
