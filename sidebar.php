@@ -1,6 +1,7 @@
 <?php $products = select("product"); ?>
   <!-- sidebar navigation -->
   <nav id="nav">
+    <p id="products-nav__title">2016 Models</p>
     <ul class="products-nav">
 
     <?php foreach ($products as $key => $product):?>

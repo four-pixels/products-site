@@ -3,7 +3,7 @@
   require_once 'configFolder/sessions.php';
   
   function connect(){
-    $link = new \mysqli('localhost', 'shopping', 'shopping', 'shopping');
+    $link = new \mysqli('localhost', 'root', 'root', 'shopping');
     // print "Successfully connected. \n";
     return $link;
   }

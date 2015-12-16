@@ -10,7 +10,6 @@
   display: none;
   @include med-screen{
   display: flex;
-  background: red;
   height: 80vh;
   justify-content: center;
   background:  linear-gradient(
@@ -24,7 +23,6 @@
   img{
     flex-basis: 70%;
     opacity: 0.8;
-    // padding: 8em 0;
   }
 }
 

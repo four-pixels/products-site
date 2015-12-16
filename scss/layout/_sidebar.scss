@@ -10,14 +10,27 @@
   padding:3em;
   position: relative;
   z-index: 10;
+  #products-nav__title{
+    display: none;
+  }
   @include med-screen{
     max-width: 100%;
-   background: $bg-color--main; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+   background-color: darken($bg-color--main,8%);
+   background-image: url("/images/stardust.png"); 
+    #products-nav__title{
+      display: inline-block;
+      font-size: 1.5em;
+      color: $color-text--primary;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      margin:3em 0 4em;
+      border-left: 2px solid $color--secondary;
+      padding-left: 1em;
+    }
+
   }
 }
+
 
 .products-nav{
   @include med-screen{
@@ -31,7 +44,10 @@
 
 .products-nav__item{
   margin: 2em 0;
-  transition: background .3s ease;
+  transition: background .3s ease,
+              border .3s ease;
+  border: 1px solid transparent;
+  border-radius: 10px;
 
   a{
     text-align: center;
@@ -39,8 +55,7 @@
   }
   &:hover,
   &.active{
-    background-color: darken($bg-color--main, 4%);
-    border-radius: 10px;
+    border: 1px solid darken($color-text--primary, 60%);
   }
 
   @include med-screen{
@@ -49,6 +64,10 @@
       width: 280px;
       margin: auto;
       margin-bottom: 5em;
+
+      &.active{
+        border: transparent;
+      }
     
   }
 }
