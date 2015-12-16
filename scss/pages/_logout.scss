@@ -1,0 +1,17 @@
+#logout{
+  background: #1d1d1d;
+  height: 100vh;
+  display: flex;
+} 
+
+.logout-box{
+  padding: 3em 2em;
+  width: 20em;
+  text-align: center;
+  background: $color--secondary;
+  h1{
+    font-weight: $font-weight--light;
+  }
+  color: white;
+  margin:  auto;
+}
