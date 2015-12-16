@@ -12,35 +12,36 @@ and open the template in the editor.
     <title>Bikes</title>
     <link href="/css/animate.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/normalize.min.css" rel="stylesheet" type="text/css"/>
-   <!--  <link href="/css/main.css" rel="stylesheet" type="text/css"/> -->
-   <link href='https://fonts.googleapis.com/css?family=Archivo+Black|Source+Sans+Pro:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <!--  <link href="/css/main.css" rel="stylesheet" type="text/css"/> -->
+    <link href='https://fonts.googleapis.com/css?family=Archivo+Black|Source+Sans+Pro:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/libs/js/jquery.js"></script>
     <script src="/js/main.js" type="text/javascript"></script>
   </head>
   <body>
-  <?php if ($_SERVER['PHP_SELF'] !== '/login.php') : ?>
-    <header id="main_header">
-      <nav id="main-nav">
-        <ul>
-          <li class="<?php if ($_SERVER['PHP_SELF'] === '/index.php') echo 'active'; ?>">
-            <a href="index.php"> Home</a>
-          </li>
-          <!-- <li class="<?php //if ($_SERVER['PHP_SELF'] === '/x.php') echo 'active'; ?>">
-            <a href="x.php">DEVELOPMENT STUDD</a>
-          </li> -->
-          <li><a href="#">Cart</a></li>
-            <?php if (isLoggedIn() === false) : ?>
-            <li class="<?php if ($_SERVER['PHP_SELF'] === '/login.php') echo 'active'; ?>">
-              <a href="login.php">Login</a>
-            </li>    
-            <?php else : ?>   
-            <li>
-              <a href="logout.php">Logout</a>
+    <?php if ($_SERVER['PHP_SELF'] !== '/login.php') : ?>
+      <header id="main_header">
+        <img src="images/triumphLogo.svg" alt="Triumph logo"> 
+        <nav id="main-nav">
+          <ul>
+            <li class="<?php if ($_SERVER['PHP_SELF'] === '/index.php') echo 'active'; ?>">
+              <a href="index.php"> Home</a>
             </li>
-          <?php endif ?>
+            <!-- <li class="<?php //if ($_SERVER['PHP_SELF'] === '/x.php') echo 'active';   ?>">
+              <a href="x.php">DEVELOPMENT STUDD</a>
+            </li> -->
+            <li><a href="#">Cart</a></li>
+            <?php if (isLoggedIn() === false) : ?>
+              <li class="<?php if ($_SERVER['PHP_SELF'] === '/login.php') echo 'active'; ?>">
+                <a href="login.php">Login</a>
+              </li>    
+            <?php else : ?>   
+              <li>
+                <a href="logout.php">Logout</a>
+              </li>
+            <?php endif ?>
 
-        </ul>
-      </nav>
-    </header>
-  <?php endif; ?>
+          </ul>
+        </nav>
+      </header>
+    <?php endif; ?>
