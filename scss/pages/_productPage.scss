@@ -93,6 +93,7 @@
   width: 50%;
 }
 
+
 .product__price{
   text-align: right;
   margin-top: 1em;
@@ -101,6 +102,9 @@
   font-weight: $font-weight--bold;
   font-family: $font-secondary;
   color: $color-text--secondary--dark;
+  @include small-screen{
+    text-align: center;
+  }
 
   span{
     color: $color-text--primary;

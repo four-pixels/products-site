@@ -30,6 +30,7 @@
     })
             .done(function (data) {
               $('.product').html(data);
+              document.title = 'Bikes | ' + $('#product__title').html();
             })
             .fail(function () {
               console.log("error");

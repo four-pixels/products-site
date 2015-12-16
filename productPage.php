@@ -1,5 +1,6 @@
 <?php require_once 'configFolder/databaseFunctions/databaseConnect.php'; ?>
 <?php require_once 'configFolder/sessions.php'; ?>
+<?php $product = select("product where id =" . $_GET['id']) ?>
 
 <?php
 $isAjax = true;
@@ -16,7 +17,6 @@ if (!(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_R
   <meta http-equiv="refresh" content="0;URL='http://<?php echo $_SERVER['HTTP_HOST'] ?>/login.php'" /> 
 <?php endif; ?>
 
-<?php $product = select("product where id =" . $_GET['id']) ?>
 
 <div class="product__info">
   <div class="product__thumbnails__container">

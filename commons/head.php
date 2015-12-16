@@ -9,7 +9,11 @@ and open the template in the editor.
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Bikes</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="Rene Ramirez and Erick Hernandez">
+    <meta name="description" content="An eductational purpose only E-commerce site for Triumph Motorcycles">
+    <link rel="copyright" href="/logout.php">
+    <title>Bikes | <?php if(isset($product) && isset($product[0])) echo $product[0]['productname']  ?></title>
     <link href="/css/animate.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/normalize.min.css" rel="stylesheet" type="text/css"/>
     <!--  <link href="/css/main.css" rel="stylesheet" type="text/css"/> -->
