@@ -53,7 +53,8 @@ transition: all 0.5s ease-out;
     min-width:90px;
     min-height: 90px;
     filter: grayscale(1);
-    margin-left: .5em;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
     position: relative;
     transition: width .6s ease,
                 filter 2s ease;
@@ -79,15 +80,7 @@ transition: all 0.5s ease-out;
     }
 }
 
-.thumbnail__image-1{
-  background-image: url("/images/thunderbird/27-Thunderbird-15-Gallery-1.jpg");
-}
-.thumbnail__image-2{
-  background-image: url("/images/thunderbird/27-Thunderbird-15-Gallery-2.jpg");
-}
-.thumbnail__image-3{
-  background-image: url("/images/thunderbird/27-Thunderbird-15-Gallery-3.jpg");
-}
+
 
 .product__description{
   float:right;
@@ -150,27 +143,65 @@ transition: all 0.5s ease-out;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  height: 100%;
+  height: auto;
+  position: static;
+  padding: 4em;
   .product__img-container{
     order: -1;
-    overflow-y: auto;
+    overflow: initial;
+    min-height: 0;
+    font-size: calc(0.1em + 1vw);
+    text-align:center;
+    margin-top: 10em;
     #product__image{
-      position: relative;
+      position: static;
+      display:inline;
     }
   }
+
+  #product__title{
+    padding-right: 0;
+  }
+  .product__description,
   .product__info{
-    overflow-y: auto;
+    overflow: auto;
     min-height:auto;
   }
-}
 
-#singleProduct{
-  display: flex;
-   background:  linear-gradient(
-      rgba($bg-color--main, 0.9), 
-      rgba($bg-color--main, 0.6)
-    ),url("/images/productPage_bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  .product__description{
+    @include small-screen{
+      width: 90%;
+      float: none;
+      margin: 4em auto;
+    }
+  }
+
+  .product__info{
+    padding: 4em 1em;
+  }
+
+  .product__thumbnails__container{
+    @include small-screen{
+      float: none;
+      margin: 0 auto 2em;
+      width: 80%;
+ 
+    }
+
+    li{
+      @include small-screen{
+        margin: 0;
+      }
+    }
+
+    ul{
+    float: none;
+      @include small-screen{
+        margin-right: 0;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  }
+
 }

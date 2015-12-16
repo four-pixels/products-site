@@ -2,7 +2,13 @@
 //media query mixin for desktop smaller than 1130px
 
 @mixin med-screen {
-  @media screen and (max-width: #{$large-screen}) {
+  @media screen and (max-width: #{$large-screen-bp}) {
+    @content;
+  }
+}
+
+@mixin small-screen{
+  @media screen and (max-width: #{$med-screen-bp}){
     @content;
   }
 }
