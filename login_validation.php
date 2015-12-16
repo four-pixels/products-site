@@ -1,5 +1,5 @@
 <?php
-require 'configFolder/databaseFunctions/databaseConnect.php';
+require_once 'configFolder/databaseFunctions/databaseConnect.php';
 require_once 'configFolder/sessions.php';
 $userForm = $_POST['user'];
 $userCheck = checkIfUserExists($userForm);

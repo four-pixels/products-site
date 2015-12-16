@@ -153,7 +153,7 @@ But like any Triumph it's highly practical too, and perfectly feasible as an eve
               'quantity' => '7'
           ],
           [
-              'productname' => 'T-BIRD COMMANDER',
+              'productname' => 'COMMANDER',
               'description' => "A strong, willing engine, refined chassis, powerful looks and broad riding position give our new Thunderbird Commander the power and presence to dominate any road. Based on our original Thunderbird, the Commander easily impresses riders and onlookers with its classic cruiser style, premium feel and the world’s largest capacity parallel twin engine. Being a Triumph, it’s a cruiser that also gives you day-long comfort, practicality, character and, on top of all that, superb handling. There’s no compromise here.",
               'price' => '$17,600',
               'quantity' => '4'

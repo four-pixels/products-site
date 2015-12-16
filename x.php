@@ -1,22 +1,11 @@
 <?php
 include 'commons/head.php';
-require_once 'session/SessionManager.php' ;
 require_once 'database/Database.php' ;
 
 
-$session = new FourPixels\Session\SessionManager();
 $db = new FourPixels\Database\Database();
 ?>
 <div id="home">
-  <section>
-    <h2>SESSION</h2>
-    <?php var_dump($session); ?>
-    <h3>is Login?</h3>
-    <?php var_dump($session->isLogin()); ?>
-    <h3>GET USERNAME AND ID</h3>
-    <?php var_dump($session->getUsername()); ?>
-    <?php var_dump($session->getUserId()); ?>
-  </section>
   <section>
     <h2>SELECT ALL USERS [getUserAll()]</h2>
     <?php
